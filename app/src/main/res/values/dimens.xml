@@ -7,4 +7,12 @@
     <dimen name="notice_text_size_normal">13sp</dimen>
     <dimen name="notice_list_padding_all">16dp</dimen>
     <dimen name="auth_radius_btn">30dp</dimen>
+    <dimen name="home_drawer_margin_top_profile">44dp</dimen>
+    <dimen name="home_drawer_margin_top_profile_name">8dp</dimen>
+    <dimen name="height_divider">1dp</dimen>
+    <dimen name="home_drawer_height_item">46dp</dimen>
+    <dimen name="home_drawer_margin_top_bottom_sheet">25dp</dimen>
+    <dimen name="home_drawer_margin_bottom_introduce">103dp</dimen>
+    <dimen name="home_drawer_margin_top_name_divider">45.5dp</dimen>
+    <dimen name="home_drawer_margin_top_divider_item">24.5dp</dimen>
 </resources>
