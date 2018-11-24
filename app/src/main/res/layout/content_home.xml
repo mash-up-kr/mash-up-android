@@ -1,7 +1,281 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="32dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/cvTeamStudy"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <ImageView
+        android:id="@+id/ivHomeLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/ic_home_mashup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/background"
+        >
+
+        <TextView
+            android:id="@+id/tvNoticeAlarm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="17dp"
+            android:paddingEnd="17dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            android:background="@color/colorAccent"
+            tools:text="정아님,전체회의 공지를 확인해주세요!"/>
+
+        <TextView
+            android:id="@+id/tvNoticedAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="17dp"
+            android:textSize="10sp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNoticeAlarm"
+            tools:text="2018.11.24 오후 3시"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clNotice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginStart="11dp"
+            android:layout_marginEnd="11dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:background="#EBEBEB"
+            app:layout_constraintTop_toBottomOf="@id/tvNoticedAt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            >
+
+            <ImageView
+                android:id="@+id/ivNoticeAlarm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_speak"
+                app:layout_constraintTop_toTopOf="@id/tvNoticeDate"
+                app:layout_constraintBottom_toBottomOf="@id/tvNoticeLocation"
+                app:layout_constraintStart_toStartOf="parent"
+            />
+
+            <TextView
+                android:id="@+id/tvNoticeDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivNoticeAlarm"
+                tools:text="2018월 11월 24일 3시-6시"
+            />
+
+            <TextView
+                android:id="@+id/tvNoticeLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textSize="13sp"
+                android:textColor="@color/colorBlack"
+                app:layout_constraintTop_toBottomOf="@id/tvNoticeDate"
+                app:layout_constraintStart_toStartOf="@id/tvNoticeDate"
+                tools:text="삼성역 위워크 10층"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvNoticeContent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="7dp"
+            android:textSize="10sp"
+            android:textColor="@color/textGray"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/clNotice"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해줘!!"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/tvHomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:text="HELLO\nMASH-UP!"
+        android:textSize="35sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivHomeLogo"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glCenter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent="0.5"
+        android:orientation="vertical" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvTeamStudy"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/home_content_margin_team_study"
+        android:layout_marginEnd="@dimen/home_content_margin_team_study_center"
+        android:layout_marginBottom="@dimen/home_content_margin_bottom_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/glCenter"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="15dp" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/home_content_padding_card" >
+
+            <TextView
+                android:id="@+id/tvTeams"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="(And,ios,Back,Des)"
+                android:textSize="12sp"
+                android:textColor="@color/textGray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+            <TextView
+                android:id="@+id/tvCardTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="TEAM\nSTUDY"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvTeams"
+            />
+
+            <ImageView
+                android:id="@+id/ivCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/ic_home_team"
+                app:layout_constraintBottom_toTopOf="@id/tvCardTitle"
+                app:layout_constraintTop_toTopOf="parent"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvAppProject"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/home_content_margin_team_study_center"
+        android:layout_marginEnd="@dimen/home_content_margin_team_study"
+        app:layout_constraintBottom_toBottomOf="@id/cvTeamStudy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/glCenter"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/home_content_padding_card" >
+
+            <TextView
+                android:id="@id/tvTeams"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="(And,ios,Back,Des)"
+                android:textSize="12sp"
+                android:textColor="@color/textGray"
+                android:visibility="invisible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+            <TextView
+                android:id="@id/tvCardTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="APP\nPROJECT"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvTeams"
+            />
+
+            <ImageView
+                android:id="@id/ivCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="3dp"
+                android:src="@drawable/ic_home_phone"
+                app:layout_constraintBottom_toTopOf="@id/tvCardTitle"
+                app:layout_constraintTop_toTopOf="parent"
+            />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

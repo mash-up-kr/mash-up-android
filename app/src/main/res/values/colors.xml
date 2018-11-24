@@ -11,4 +11,5 @@
     <color name="colorDivider">#EAE9F2</color>
     <color name="colorItemSelected">#22F1F0F6</color>
     <color name="colorItemPressed">#22F5F4FA</color>
+    <color name="colorBlack">#000000</color>
 </resources>

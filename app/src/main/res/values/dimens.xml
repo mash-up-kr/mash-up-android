@@ -15,4 +15,8 @@
     <dimen name="home_drawer_margin_bottom_introduce">103dp</dimen>
     <dimen name="home_drawer_margin_top_name_divider">45.5dp</dimen>
     <dimen name="home_drawer_margin_top_divider_item">24.5dp</dimen>
+    <dimen name="home_content_margin_team_study">30dp</dimen>
+    <dimen name="home_content_margin_team_study_center">10dp</dimen>
+    <dimen name="home_content_margin_bottom_card">32dp</dimen>
+    <dimen name="home_content_padding_card">15dp</dimen>
 </resources>
