@@ -10,4 +10,5 @@
     <string name="home_drawer_item_notice_project">프로젝트팀 공지</string>
     <string name="home_drawer_item_web">웹(공지만들기)</string>
     <string name="home_drawer_item_introduce">매쉬업 소개</string>
+    <string name="title_public_notice">전체회의 공지</string>
 </resources>
