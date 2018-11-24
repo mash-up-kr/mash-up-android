@@ -4,6 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FC5E5D</color>
     <color name="textGray">#888888</color>
+    <color name="textGrayNormal">#707070</color>
+    <color name="colorTransparent">#00000000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorWhite72">#B7FFFFFF</color>
+    <color name="colorDivider">#EAE9F2</color>
+    <color name="colorItemSelected">#22F1F0F6</color>
+    <color name="colorItemPressed">#22F5F4FA</color>
+    <color name="colorBlack">#000000</color>
 </resources>

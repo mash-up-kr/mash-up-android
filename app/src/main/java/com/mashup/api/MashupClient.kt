@@ -1,6 +1,7 @@
 package com.mashup.api
 
 import com.mashup.BuildConfig
+import com.mashup.util.GsonLoader
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -29,7 +30,7 @@ object MashupClient {
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonLoader.gson))
             .build()
     }
 

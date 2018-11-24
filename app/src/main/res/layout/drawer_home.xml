@@ -3,8 +3,118 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="180dp"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent" xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorWhite">
+
+    <ImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/home_drawer_margin_top_profile"
+        android:src="@drawable/ic_thumb"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/home_drawer_margin_top_profile_name"
+        android:textColor="@color/textGrayNormal"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/ivProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="고은이"
+        />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_divider"
+        android:layout_marginTop="@dimen/home_drawer_margin_top_name_divider"
+        android:background="@color/colorDivider"
+        app:layout_constraintTop_toBottomOf="@id/tvName"
+        />
+
+    <TextView
+        android:id="@+id/btnNoticeTeam"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_drawer_height_item"
+        android:layout_marginTop="@dimen/home_drawer_margin_top_divider_item"
+        android:gravity="center"
+        android:text="@string/home_drawer_item_notice_team"
+        android:textColor="@color/textGrayNormal"
+        android:textSize="15sp"
+        android:background="@drawable/color_drawer_item_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        />
+
+
+    <TextView
+        android:id="@+id/btnNoticeProject"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_drawer_height_item"
+        android:gravity="center"
+        android:text="@string/home_drawer_item_notice_project"
+        android:textColor="@color/textGrayNormal"
+        android:textSize="15sp"
+        android:background="@drawable/color_drawer_item_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnNoticeTeam"
+        />
+
+
+    <View
+        android:id="@+id/bgBottom"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fakeMargin"
+        />
+
+    <View
+        android:id="@+id/fakeMargin"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_drawer_margin_top_bottom_sheet"
+        app:layout_constraintBottom_toTopOf="@id/btnWeb"
+        />
+
+    <TextView
+        android:id="@+id/btnMashupIntroduce"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_drawer_height_item"
+        android:layout_marginBottom="@dimen/home_drawer_margin_bottom_introduce"
+        android:gravity="center"
+        android:text="@string/home_drawer_item_introduce"
+        android:textColor="@color/textGrayNormal"
+        android:textSize="15sp"
+        android:background="@drawable/color_drawer_item_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/btnWeb"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/home_drawer_height_item"
+        android:gravity="center"
+        android:text="@string/home_drawer_item_web"
+        android:textColor="@color/textGrayNormal"
+        android:textSize="15sp"
+        android:background="@drawable/color_drawer_item_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnMashupIntroduce"
+    />
 
 
 

@@ -8,4 +8,16 @@
     <dimen name="notice_list_padding_all">16dp</dimen>
     <dimen name="auth_radius_btn">30dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="home_drawer_margin_top_profile">44dp</dimen>
+    <dimen name="home_drawer_margin_top_profile_name">8dp</dimen>
+    <dimen name="height_divider">1dp</dimen>
+    <dimen name="home_drawer_height_item">46dp</dimen>
+    <dimen name="home_drawer_margin_top_bottom_sheet">25dp</dimen>
+    <dimen name="home_drawer_margin_bottom_introduce">103dp</dimen>
+    <dimen name="home_drawer_margin_top_name_divider">45.5dp</dimen>
+    <dimen name="home_drawer_margin_top_divider_item">24.5dp</dimen>
+    <dimen name="home_content_margin_team_study">30dp</dimen>
+    <dimen name="home_content_margin_team_study_center">10dp</dimen>
+    <dimen name="home_content_margin_bottom_card">32dp</dimen>
+    <dimen name="home_content_padding_card">15dp</dimen>
 </resources>

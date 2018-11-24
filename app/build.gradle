@@ -41,6 +41,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
+    implementation "androidx.cardview:cardview:1.0.0"
 
     // Android Architecture component
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
