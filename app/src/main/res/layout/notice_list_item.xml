@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
     />
     <TextView
-        android:id="@+id/tvTime"
+        android:id="@+id/tvNoticeTime"
         android:text=""
         android:textSize="@dimen/notice_text_size_normal"
         android:layout_marginTop="@dimen/notice_margin_top_tv1_tv2_wide"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
     />
     <TextView
-        android:id="@+id/tvSpace"
+        android:id="@+id/tvNoticeSpace"
         android:text=""
         android:textSize="@dimen/notice_text_size_normal"
         android:layout_marginTop="@dimen/notice_margin_top_tv1_tv2_narrow"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
     />
     <TextView
-        android:id="@+id/tvContent"
+        android:id="@+id/tvNoticeContent"
         android:text=""
         android:textSize="@dimen/notice_text_size_small"
         android:layout_marginTop="@dimen/notice_margin_top_tv1_tv2_wide"

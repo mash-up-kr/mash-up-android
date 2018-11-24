@@ -1,8 +1,10 @@
-package com.mashup
+package com.mashup.app.auth
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mashup.R
+import com.mashup.SplashActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity() {
