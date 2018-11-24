@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mashup.R
 import com.mashup.model.Location
 import com.mashup.model.Notice
-import kotlinx.android.synthetic.main.content_notice.*
+import kotlinx.android.synthetic.main.activity_notice.*
 import org.threeten.bp.LocalDateTime
 import java.time.LocalDate
 

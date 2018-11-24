@@ -5,9 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/notice_list_padding_all"
     tools:context=".app.notice.NoticeActivity"
-    android:backgroundTint="@color/colorPrimary">
+    android:background="@color/colorPrimary">
 
-    <include layout="@layout/content_notice"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvNotice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

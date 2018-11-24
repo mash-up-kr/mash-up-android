@@ -20,4 +20,5 @@
     <dimen name="home_content_margin_team_study_center">10dp</dimen>
     <dimen name="home_content_margin_bottom_card">32dp</dimen>
     <dimen name="home_content_padding_card">15dp</dimen>
+    <dimen name="notice_list_margin_all">16dp</dimen>
 </resources>

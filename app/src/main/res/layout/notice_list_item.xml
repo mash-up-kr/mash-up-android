@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="@dimen/notice_list_padding_all"
+    android:layout_marginTop="@dimen/notice_list_margin_all"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
     <TextView
         android:id="@+id/tvNoticeDatestamp"
         tools:text="tvNoticeDatestamp"
