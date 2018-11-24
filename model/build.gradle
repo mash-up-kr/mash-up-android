@@ -29,4 +29,7 @@ dependencies {
 
     // three ten abp (for using JSR310) instead of joda-time
     implementation "com.jakewharton.threetenabp:threetenabp:$threetenabp_version"
+
+    // for serialize
+    implementation "com.google.code.gson:gson:$gson_version"
 }

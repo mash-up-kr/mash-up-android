@@ -4,7 +4,6 @@ import org.threeten.bp.LocalDate
 
 
 enum class Team {
-
     DESIGN,
     ANDROID,
     IOS,
@@ -20,14 +19,15 @@ enum class Role {
 }
 
 data class User (
-    val id: Int,
+    val id: Int?,
+    val email: String?,
     val name: String,
-    val description: String,
-    val profileImage: String,
+    val description: String?,
+    val profileImage: String?,
     val team: Team,
-    val joinedAt: LocalDate,
+    val joinedAt: LocalDate?,
     val exitedAt: LocalDate?,
-    val status: Status,
-    val role: Role,
-    val baseNumber: Int
+    val status: Status?,
+    val role: Role?,
+    val baseNumber: Int?
 )
