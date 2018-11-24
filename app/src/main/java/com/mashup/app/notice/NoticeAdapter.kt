@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mashup.R
 import com.mashup.model.Notice
 
-class NoticeAdapter(private val noticeList: ArrayList<Notice>) : RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
+class NoticeAdapter(var noticeList: List<Notice>) : RecyclerView.Adapter<NoticeAdapter.ViewHolder>() {
     private var listener: OnClickListener? = null
 
     fun setListener(clickListener: OnClickListener) {
@@ -42,10 +42,10 @@ class NoticeAdapter(private val noticeList: ArrayList<Notice>) : RecyclerView.Ad
             val tvNoticeSpace = itemView.findViewById<TextView>(R.id.tvNoticeSpace)
             val tvNoticeContent = itemView.findViewById<TextView>(R.id.tvNoticeContent)
 
-            tvNoticeDatestamp.text = notice.createdAt.toString()
+            tvNoticeDatestamp.text = notice.noticedAt.toString()
             tvNoticeTime.text = notice.date.toString()
             tvNoticeSpace.text = notice.location.toString()
-            tvNoticeContent.text = notice.description
+            tvNoticeContent.text = notice.content
         }
     }
 

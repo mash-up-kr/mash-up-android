@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.mashup.api.MashupClient
 import com.mashup.api.user.UserService
 import com.mashup.api.user.request.UserRegisterRequest
+import com.mashup.model.Team
 import com.mashup.model.User
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -16,10 +17,10 @@ class AuthViewModel: ViewModel() {
 
     private var registerDisposable: Disposable? = null
 
-    fun register(email: String, password: String) {
+    fun register(email: String, password: String, name: String, team: Team) {
         registerDisposable?.dispose()
         registerDisposable = MashupClient.getService(UserService::class.java)
-            .register(UserRegisterRequest(email = email, password = password))
+            .register(UserRegisterRequest(email = email, password = password, name = name, team = team))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { userData.postValue(it) }

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">mash-up-android</string>
     <string name="title_activity_notice">NoticeActivity</string>
+    <string name="notice_example_content">
+        다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해줘!!
+    </string>
+    <string name="notice_example_date">2018월 11월 24일 3시-6시</string>
+    <string name="notice_example_location">삼성역 위워크 10층</string>
 </resources>
