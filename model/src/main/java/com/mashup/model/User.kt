@@ -4,7 +4,11 @@ import org.threeten.bp.LocalDate
 
 
 enum class Team {
-    DESIGN, ANDROID, IOS, BACKEND
+
+    DESIGN,
+    ANDROID,
+    IOS,
+    BACKEND
 }
 
 enum class Status {
@@ -22,7 +26,7 @@ data class User (
     val profileImage: String,
     val team: Team,
     val joinedAt: LocalDate,
-    val exitedAt: LocalDate,
+    val exitedAt: LocalDate?,
     val status: Status,
     val role: Role,
     val baseNumber: Int
