@@ -22,7 +22,7 @@ data class User (
     val profileImage: String,
     val team: Team,
     val joinedAt: LocalDate,
-    val exitedAt: LocalDate,
+    val exitedAt: LocalDate?,
     val status: Status,
     val role: Role,
     val baseNumber: Int
