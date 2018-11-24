@@ -20,7 +20,7 @@ Xml : 4, 4, 4
 - color{colorName}{opacity} (camel case)
 - dimens
   - snake case
-  - {screen}_{margin / padding}_{direction}_{target1}_{target2}
+  - {screen}_{margin / padding / radius}_{direction}_{target1}_{target2}
 - strings
   - snake case
-  - {screen}_{txt / btn / hint}_{target}
+  - {screen}_{txt / btn / hint}_{target} 
