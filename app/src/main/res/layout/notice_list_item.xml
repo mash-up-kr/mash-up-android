@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="@dimen/notice_list_padding_all"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tvNoticeDatestamp"
+        android:text=""
+        android:textSize="@dimen/notice_text_size_small"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    />
+    <TextView
+        android:id="@+id/tvTime"
+        android:text=""
+        android:textSize="@dimen/notice_text_size_normal"
+        android:layout_marginTop="@dimen/notice_margin_top_tv1_tv2_wide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    />
+    <TextView
+        android:id="@+id/tvSpace"
+        android:text=""
+        android:textSize="@dimen/notice_text_size_normal"
+        android:layout_marginTop="@dimen/notice_margin_top_tv1_tv2_narrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    />
+    <TextView
+        android:id="@+id/tvContent"
+        android:text=""
+        android:textSize="@dimen/notice_text_size_small"
+        android:layout_marginTop="@dimen/notice_margin_top_tv1_tv2_wide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+    />
+</androidx.constraintlayout.widget.ConstraintLayout>
