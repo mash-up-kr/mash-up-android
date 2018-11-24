@@ -9,11 +9,11 @@ import retrofit2.http.POST
 
 interface UserService {
 
-    @POST("/register/member")
+    @POST("api/v1/register/member")
     fun register(@Body request: UserRegisterRequest): Flowable<User>
 
 
-    @POST("/login")
+    @POST("api/v1/login")
     fun login(@Body request: UserLoginRequest): Flowable<User>
 
 }

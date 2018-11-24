@@ -6,7 +6,7 @@ import java.io.Serializable
 
 
 data class Location (
-    @SerializedName("address") val address: String,
+    @SerializedName("location") val address: String,
     @SerializedName("latitude") val latitude: Double?,
     @SerializedName("longitude") val longitude: Double?
 )

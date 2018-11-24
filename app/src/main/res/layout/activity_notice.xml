@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".app.notice.NoticeActivity">
+    tools:context=".app.notice.NoticeActivity"
+    android:backgroundTint="@color/colorPrimary">
 
     <include layout="@layout/content_notice"/>
 

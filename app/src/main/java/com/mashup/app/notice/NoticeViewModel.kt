@@ -18,17 +18,17 @@ class NoticeViewModel: ViewModel() {
 
     private var noticeDisposable: Disposable? = null
 
-    fun getRecentPublicNotice() {
+    fun getNotice() {
         noticeDisposable?.dispose()
         noticeDisposable = MashupClient.getService(NoticeService::class.java)
-            .getRecentPublicNotice()
+            .getNotice(type = "public", page = 1)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe {
-                it.takeIf { it.isNotEmpty() }?.apply {
-                    noticeData.postValue(it)
-                } ?: return@subscribe
-            }
+            .subscribe({
+                noticeData.postValue(it)
+            }, {
+                it.printStackTrace()
+            })
     }
 
 }

@@ -20,8 +20,9 @@ class NoticeActivity : AppCompatActivity(), NoticeAdapter.OnClickListener {
     private val noticeAdapter : NoticeAdapter
         get() = rvNotice.adapter as NoticeAdapter
 
-    val noticeViewModel = ViewModelProviders.of(this).get(NoticeViewModel::class.java)
-
+    val noticeViewModel by lazy {
+        ViewModelProviders.of(this).get(NoticeViewModel::class.java)
+    }
 
     override fun onResume() {
         super.onResume()
@@ -44,8 +45,9 @@ class NoticeActivity : AppCompatActivity(), NoticeAdapter.OnClickListener {
     fun getNotices() {
         noticeViewModel.noticeData.observe(this, Observer {
             noticeAdapter.noticeList = it
+            noticeAdapter.notifyDataSetChanged()
         })
-        noticeViewModel.getRecentPublicNotice()
+        noticeViewModel.getNotice()
     }
 
     override fun onItemClick(notice: Notice, position: Int) {
