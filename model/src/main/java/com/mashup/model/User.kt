@@ -4,7 +4,11 @@ import org.threeten.bp.LocalDate
 
 
 enum class Team {
-    DESIGN, ANDROID, IOS, BACKEND
+
+    DESIGN,
+    ANDROID,
+    IOS,
+    BACKEND
 }
 
 enum class Status {
