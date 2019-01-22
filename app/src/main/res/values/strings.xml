@@ -1,7 +1,14 @@
 <resources>
-    <string name="app_name">mash-up-android</string>
+    <string name="app_name">Mash-Up</string>
+    <string name="title_activity_notice">NoticeActivity</string>
+    <string name="notice_example_content">
+        다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해줘!!
+    </string>
+    <string name="notice_example_date">2018월 11월 24일 3시-6시</string>
+    <string name="notice_example_location">삼성역 위워크 10층</string>
     <string name="home_drawer_item_notice_team">팀별 스터디 공지</string>
     <string name="home_drawer_item_notice_project">프로젝트팀 공지</string>
     <string name="home_drawer_item_web">웹(공지만들기)</string>
     <string name="home_drawer_item_introduce">매쉬업 소개</string>
+    <string name="title_public_notice">전체회의 공지</string>
 </resources>

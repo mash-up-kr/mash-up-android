@@ -1,8 +1,11 @@
-package com.mashup
+package com.mashup.app.auth
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.mashup.R
+import com.mashup.SplashActivity
+import com.mashup.app.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_auth.*
 
 class AuthActivity : AppCompatActivity() {
@@ -17,8 +20,7 @@ class AuthActivity : AppCompatActivity() {
     }
 
     fun moveToHome(){
-        //TODO : Need to be fixed; SplashActivity -> HomeActivity
-        val homeIntent : Intent = Intent(this, SplashActivity::class.java)
+        val homeIntent : Intent = Intent(this, HomeActivity::class.java)
         startActivity(homeIntent)
     }
 }
