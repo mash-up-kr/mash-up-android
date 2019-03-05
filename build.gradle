@@ -25,6 +25,8 @@ buildscript {
 
         firebase_firestore_version = "17.1.5"
         firebase_auth_version = "16.1.0"
+        google_services_version = "4.0.1"
+        firebase_core_version = "16.0.1"
     }
     repositories {
         google()
@@ -34,6 +36,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.gms:google-services:$google_services_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

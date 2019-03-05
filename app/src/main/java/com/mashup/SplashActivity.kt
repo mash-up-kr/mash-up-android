@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.mashup.app.auth.AuthActivity
-import com.mashup.app.home.HomeActivity
 
 class SplashActivity : AppCompatActivity() {
 

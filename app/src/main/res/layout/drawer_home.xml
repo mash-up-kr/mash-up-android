@@ -18,6 +18,7 @@
 
     <TextView
         android:id="@+id/tvName"
+        android:text="정아링"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/home_drawer_margin_top_profile_name"
@@ -26,7 +27,6 @@
         app:layout_constraintTop_toBottomOf="@id/ivProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="고은이"
         />
 
     <View
