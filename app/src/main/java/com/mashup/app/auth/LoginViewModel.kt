@@ -14,7 +14,7 @@ import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 import javax.security.auth.callback.Callback
 
-class AuthViewModel: ViewModel() {
+class LoginViewModel: ViewModel() {
 
     val userData = MutableLiveData<User>()
 
