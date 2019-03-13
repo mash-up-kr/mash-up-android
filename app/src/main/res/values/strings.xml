@@ -11,4 +11,13 @@
     <string name="home_drawer_item_web">웹(공지만들기)</string>
     <string name="home_drawer_item_introduce">매쉬업 소개</string>
     <string name="title_public_notice">전체회의 공지</string>
+    <string name="login_tv_email">이메일</string>
+    <string name="login_et_email">mashup@gmail.com</string>
+    <string name="login_et_password">8-12 글자로 정해주세요.</string>
+    <string name="login_btn">로그인하기</string>
+    <string name="login_tv_screen_title">로그인</string>
+    <string name="login_tv_main_title">매쉬업 공지앱</string>
+    <string name="login_tv_password">비밀번호</string>
+    <string name="tv_sign_in">인증 및 회원가입하기</string>
+    <string name="login_tv_welcome_msg">WELCOME TO MASH UP NOTICE APP</string>
 </resources>
