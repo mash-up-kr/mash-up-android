@@ -25,3 +25,4 @@ inline fun <reified T> DocumentReference.toSingle(): Single<T> = Single.create {
         emitter.onError(it)
     }
 }
+
