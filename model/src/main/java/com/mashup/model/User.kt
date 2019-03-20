@@ -1,33 +1,29 @@
 package com.mashup.model
 
-import org.threeten.bp.LocalDate
+import com.google.gson.annotations.SerializedName
 
 
 enum class Team {
-    DESIGN,
-    ANDROID,
-    IOS,
-    BACKEND
-}
-
-enum class Status {
-    ACTIVATED, EXITED, DEACTIVATED,
+    @SerializedName("android") ANDROID,
+    @SerializedName("backend") BACKEND,
+    @SerializedName("design") DESIGN,
+    @SerializedName("ios") IOS
 }
 
 enum class Role {
-    MEMBER, VICE_TEAM_LEADER, TEAM_LEADER, GENERAL_AFFAIRS, VICE_CHIEF, CHIEF
+    @SerializedName("READ") READ,
+    @SerializedName("WRITE") WRITE
 }
 
 data class User (
-    val id: Int?,
-    val email: String?,
-    val name: String,
-    val description: String?,
-    val profileImage: String?,
-    val team: Team,
-    val joinedAt: LocalDate?,
-    val exitedAt: LocalDate?,
-    val status: Status?,
-    val role: Role?,
-    val baseNumber: Int?
+    @SerializedName("uid") var uid: String? = null,
+    @SerializedName("email") var email: String = "",
+    @SerializedName("base_number") var baseNumber: Int = 0,
+    @SerializedName("exit") var exit: Boolean = false,
+    @SerializedName("name") var name: String = "",
+    @SerializedName("phone") var phone: String = "",
+    @SerializedName("role") var role: Role = Role.READ,
+    @SerializedName("team") var team: Team = Team.ANDROID,
+    @SerializedName("team_role") var teamRole: Role = Role.READ,
+    @SerializedName("profile_img") val profileImage: String? = null
 )

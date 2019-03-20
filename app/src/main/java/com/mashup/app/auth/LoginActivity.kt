@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.airbnb.mvrx.BaseMvRxActivity
+import com.airbnb.mvrx.viewModel
+import com.airbnb.mvrx.withState
 import com.google.firebase.auth.FirebaseAuth
 import com.mashup.R
 import com.mashup.app.home.HomeActivity
@@ -12,23 +15,18 @@ import com.mashup.ext.toast
 import kotlinx.android.synthetic.main.activity_login.*
 import timber.log.Timber
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseMvRxActivity() {
 
-    private lateinit var auth: FirebaseAuth
-
-    override fun onStart() {
-        super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        val currentUser = auth.currentUser
-//        updateUI(currentUser)
-    }
+    private val signInViewModel by viewModel(SignInViewModel::class)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
+        signInViewModel.asyncSubscribe(this, SignInState::signInRequest) {
+            // TODO hide progress and move to home
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
 
         btnLogin.setOnClickListener {
             var email : String = etEmail.text.toString()
@@ -39,10 +37,13 @@ class LoginActivity : AppCompatActivity() {
             }else if (password.isEmpty() || (password.split("").size<8) || (password.split("").size>12)){
                 "알맞은 비밀번호 서식이 아닙니다. 8-12자로 설정해주세요.".toast(this)
             }else{
+                val auth : FirebaseAuth = FirebaseAuth.getInstance()
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Timber.v("signInWithEmail:success")
+                            startActivity(Intent(this, HomeActivity::class.java))
+                            finish()
                             val user = auth.currentUser
                         } else {
                             // TODO : DB 쿼리를 통해 email이 DB 내에 있는지 확인
@@ -60,10 +61,8 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    fun moveToHome(){
-        val homeIntent : Intent = Intent(this, HomeActivity::class.java)
-        startActivity(homeIntent)
-    }
-    companion object {
+    override fun onStart() {
+        super.onStart()
+        FirebaseAuth.getInstance().currentUser?.let(signInViewModel::signIn)
     }
 }
