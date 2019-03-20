@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.mashup.R
 import com.mashup.app.home.HomeActivity
+import com.mashup.ext.toast
 import kotlinx.android.synthetic.main.activity_login.*
 import timber.log.Timber
 
@@ -32,25 +33,30 @@ class LoginActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             var email : String = etEmail.text.toString()
             var password : String = etPassword.text.toString()
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this) { task ->
-                    if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
-                        Timber.v("signInWithEmail:success")
-                        Toast.makeText(baseContext, "Authentication successed.",
-                            Toast.LENGTH_SHORT).show()
-                        val user = auth.currentUser
-//                        updateUI(user)
-                    } else {
-                        // If sign in fails, display a message to the user.
-                        Timber.w(task.exception, "signInWithEmail:failure")
-                        Toast.makeText(baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT).show()
-//                        updateUI(null)
-                    }
 
-                    // ...
-                }
+            if (email.isEmpty() || !email.contains("@")){
+                "알맞은 이메일 서식이 아닙니다.".toast(this)
+            }else if (password.isEmpty() || (password.split("").size<8) || (password.split("").size>12)){
+                "알맞은 비밀번호 서식이 아닙니다. 8-12자로 설정해주세요.".toast(this)
+            }else{
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Timber.v("signInWithEmail:success")
+                            val user = auth.currentUser
+                        } else {
+                            // TODO : DB 쿼리를 통해 email이 DB 내에 있는지 확인
+                            /**
+                             * 1) email 이 DB 내에 존재하면, 입력정보가 틀렸음을 알려준다.
+                             * 2) email 이 DB 내에 존재하지 않으면, 회원가입으로 유도한다.
+                             * 일단은 구냥 회원가입 절차로 넘어간다!
+                             * **/
+                            Timber.w(task.exception, "signInWithEmail:failure")
+                        }
+
+                        // ...
+                    }
+            }
         }
     }
 
