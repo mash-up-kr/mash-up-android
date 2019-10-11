@@ -22,7 +22,7 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", "BASE_URL", "\"http://192.168.1.147:8080/\""
+            buildConfigField "String", "BASE_URL", "\"https://mashup.lhy.kr/\""
         }
         release {
             minifyEnabled false
@@ -30,12 +30,18 @@ android {
             buildConfigField "String", "BASE_URL", "\"\""
         }
     }
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    implementation 'com.google.android.material:material:1.0.0-alpha1'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation "com.google.android.material:material:1.0.0"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -54,14 +60,13 @@ dependencies {
     // Android Architecture component
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_version"
-//    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     // MvRx + Epoxy + Koin
     implementation "com.airbnb.android:mvrx:$mvrx_version"
     implementation "com.airbnb.android:epoxy:$epoxy_version"
     kapt "com.airbnb.android:epoxy-processor:$epoxy_version"
-    implementation "org.koin:koin-android:$koin_version"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -88,6 +93,15 @@ dependencies {
     implementation "com.facebook.stetho:stetho:$stetho_version"
     implementation "com.facebook.stetho:stetho-okhttp3:$stetho_version"
 
+    // Koin for Kotlin
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+    implementation "org.koin:koin-android:$koin_version"
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    implementation 'joda-time:joda-time:2.10.4'
 }
 apply plugin: 'com.google.gms.google-services'
 com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

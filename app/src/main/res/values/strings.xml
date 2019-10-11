@@ -20,4 +20,6 @@
     <string name="login_tv_password">비밀번호</string>
     <string name="tv_sign_in">인증 및 회원가입하기</string>
     <string name="login_tv_welcome_msg">WELCOME TO MASH UP NOTICE APP</string>
+
+    <string name="notice_attendance_set_format">투표 | %d명 참여 중</string>
 </resources>

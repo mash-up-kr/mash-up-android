@@ -17,9 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".app.home.HomeActivity"/>
         <activity
-            android:name=".app.notice.NoticeActivity"
+            android:name="com.mashup.app.notices.NoticesActivity"
             android:label="@string/title_activity_notice"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>

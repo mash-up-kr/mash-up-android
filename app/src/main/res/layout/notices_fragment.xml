@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="viewmodel"
+            type="com.mashup.app.notices.NoticesViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/notices"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBaseBg"
+        android:fitsSystemWindows="false"
+        tools:context=".app.notices.NoticesFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            app:elevation="0dp">
+
+            <include layout="@layout/notice_coordinatorlayout_header" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tasks_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:items="@{viewmodel.items}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

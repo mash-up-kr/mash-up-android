@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@+id/start"
+        motion:duration="3000"
+        motion:motionInterpolator="linear">
+
+        <ConstraintSet android:id="@+id/start">
+
+            <Constraint
+                android:id="@id/background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintVertical_bias="0.38" />
+
+            <Constraint
+                android:id="@id/icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="8dp"
+                motion:layout_constraintBottom_toTopOf="@+id/name"
+                motion:layout_constraintHorizontal_bias="0.5"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintVertical_bias="0.24000001"
+                motion:layout_constraintVertical_chainStyle="packed" />
+
+            <Constraint
+                android:id="@id/name"
+                android:layout_width="162dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:text="Nicolas Roard"
+                android:visibility="visible"
+                motion:autoSizeTextType="uniform"
+                motion:layout_constraintBottom_toTopOf="@+id/textView"
+                motion:layout_constraintHorizontal_bias="0.5"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@+id/icon" />
+
+            <Constraint
+                android:id="@id/textView"
+                android:layout_width="162dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="30dp"
+                android:visibility="visible"
+                motion:autoSizeTextType="uniform"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintHorizontal_bias="0.5"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toBottomOf="@+id/name" />
+        </ConstraintSet>
+
+        <ConstraintSet android:id="@+id/end">
+            <Constraint
+                android:id="@id/background"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@color/colorPrimary"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent"
+                motion:layout_constraintVertical_bias="0.38" />
+
+            <Constraint
+                android:id="@id/icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintStart_toStartOf="parent" />
+
+            <Constraint
+                android:id="@id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintStart_toEndOf="@id/icon" />
+
+            <Constraint
+                android:id="@id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintStart_toEndOf="@id/name" />
+
+        </ConstraintSet>
+    </Transition>
+
+</MotionScene>

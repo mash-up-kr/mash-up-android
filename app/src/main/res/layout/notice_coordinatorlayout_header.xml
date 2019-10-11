@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mashup.util.CollapsibleToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintToolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:fitsSystemWindows="true"
+    android:minHeight="40dp"
+    app:layoutDescription="@xml/motion_scene"
+    app:layout_scrollFlags="scroll|snap|exitUntilCollapsed">
+    <!-- enterAlways를 넣으면 하단스크롤마다 툴바가 확장되고 없애면 최상단 스크롤 일때만 확장된다. !-->
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="162dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="HELLO"
+        android:textColor="@color/colorWhite"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icon"
+        tools:layout_editor_absoluteX="74dp" />
+
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/msg_mashup"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24000001"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="162dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="MASH-UP!"
+        android:textColor="@color/colorWhite"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
+
+
+</com.mashup.util.CollapsibleToolbar>

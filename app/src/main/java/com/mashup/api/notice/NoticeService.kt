@@ -13,4 +13,7 @@ interface NoticeService {
 
     @GET("api/v1/notice/active/list?type=public&size=10")
     fun getRecentPublicNotice(): Flowable<List<Notice>>
+
+    @GET("api/notices/")
+    fun getNoticeList(): Flowable<List<Notice>>
 }

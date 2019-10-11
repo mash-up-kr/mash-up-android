@@ -29,4 +29,7 @@
     <dimen name="login_margin_top_tv_layout">48dp</dimen>
     <dimen name="login_margin_start_et_layout">30dp</dimen>
     <dimen name="login_margin_end_et_layout">30dp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_normal">14sp</dimen>
+    <dimen name="text_head">22sp</dimen>
 </resources>

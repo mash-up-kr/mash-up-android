@@ -2,12 +2,11 @@ package com.mashup.app.auth
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.mashup.R
-import com.mashup.app.home.HomeActivity
+import com.mashup.app.notices.NoticesActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import timber.log.Timber
 
@@ -55,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun moveToHome(){
-        val homeIntent : Intent = Intent(this, HomeActivity::class.java)
+        val homeIntent : Intent = Intent(this, NoticesActivity::class.java)
         startActivity(homeIntent)
     }
     companion object {

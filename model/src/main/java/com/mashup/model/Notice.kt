@@ -1,21 +1,17 @@
 package com.mashup.model
 
-import com.google.gson.annotations.SerializedName
-import org.threeten.bp.LocalDateTime
-import java.io.Serializable
+import java.util.*
 
-
-data class Location (
-    @SerializedName("location") val address: String,
-    @SerializedName("latitude") val latitude: Double?,
-    @SerializedName("longitude") val longitude: Double?
+data class Notice(
+    val pk: Int,
+    val team: Team,
+    val title: String,
+    val author: User,
+    val startAt: Date,
+    val duration: String,
+    val address1: String,
+    val address2: String,
+    val description: String,
+    val attendanceSet: ArrayList<NoticeAttendance>,
+    var userAttendance: VoteStatus = VoteStatus.NONE
 )
-
-data class Notice (
-    @SerializedName("id") val id: Int,
-    @SerializedName("title") val title: String,
-    @SerializedName("content") val content: String,
-    @SerializedName("location") val location: Location,
-    @SerializedName("meeting_at") val date: LocalDateTime,
-    @SerializedName("noticed_at") val noticedAt: LocalDateTime
-): Serializable

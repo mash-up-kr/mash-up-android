@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#4F42E9</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimaryDark">#3D33B3</color>
     <color name="colorAccent">#FC5E5D</color>
     <color name="textGray">#888888</color>
     <color name="textGrayNormal">#707070</color>
@@ -14,4 +14,9 @@
     <color name="colorBlack">#000000</color>
     <color name="colorBaseBg">#EBF0F3</color>
     <color name="colorEtHint">#DDDDDD</color>
+
+    <color name="line">#29000000</color>\
+    <color name="text">#525c69</color>
+    <color name="author">#4b9efd</color>
+    <color name="colorYellow">#ffb941</color>
 </resources>

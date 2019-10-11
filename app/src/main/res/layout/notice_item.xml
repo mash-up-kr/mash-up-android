@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.widget.CompoundButton" />
+        <import type="com.mashup.R" />
+        <import type="com.mashup.model.VoteStatus" />
+
+        <variable
+            name="notice"
+            type="com.mashup.model.Notice" />
+
+        <variable
+            name="viewmodel"
+            type="com.mashup.app.notices.NoticesViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/btn_radius_main"
+                android:backgroundTint="@color/colorYellow"
+                android:paddingStart="12dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp"
+                android:text='@{notice.team.name ?? @string/app_name}'
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/text_normal"
+                tools:text="MASH-UP" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:text="@{notice.title}"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_head"
+                android:textStyle="bold"
+                tools:text="MASH-UP" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:drawableStart="@drawable/icon_writer"
+                android:gravity="center_vertical"
+                android:text="@{notice.author.name}"
+                android:textColor="@color/author"
+                android:textSize="@dimen/text_normal"
+                tools:text="MASH-UP" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/line" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="10dp"
+                android:drawableStart="@drawable/icon_date"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                app:noticeTime="@{notice.startAt}"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="MASH-UP" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/icon_clock"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                app:startAt="@{notice.startAt}"
+                app:duration="@{notice.duration}"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="MASH-UP" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/icon_place"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:text="@{notice.address1}"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_normal"
+                tools:text="MASH-UP" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:layout_weight="1"
+                android:text="@{notice.description}"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_small"
+                tools:text="MASH-UP" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawableStart="@drawable/icon_vote"
+                android:drawableEnd="@drawable/icon_arrow"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="@{@string/notice_attendance_set_format(notice.attendanceSet.size())}"
+                android:textColor="@color/text"
+                android:textSize="@dimen/text_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="@dimen/text_small"
+                    app:backgroundResource="@{notice.userAttendance == VoteStatus.ATTEND ? R.color.author : R.color.colorWhite}"
+                    tools:text="MASH-UP" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/line" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="@dimen/text_small"
+                    app:backgroundResource="@{notice.userAttendance == VoteStatus.ABSENT ? R.color.author : R.color.colorWhite}"
+                    tools:text="MASH-UP" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
