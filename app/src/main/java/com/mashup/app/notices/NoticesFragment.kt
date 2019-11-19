@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.mashup.databinding.NoticesFragmentBinding
+import com.mashup.util.EventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoticesFragment : Fragment() {
@@ -33,6 +34,7 @@ class NoticesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.setLifecycleOwner(this.viewLifecycleOwner)
         setupListAdapter()
+        setupObserver()
     }
 
     private fun setupListAdapter() {
@@ -41,6 +43,12 @@ class NoticesFragment : Fragment() {
             listAdapter = NoticeAdapter(viewModel)
             viewDataBinding.tasksList.adapter = listAdapter
         }
+    }
+
+    private fun setupObserver() {
+        viewModel.itemChangedEvent.observe(this, EventObserver { position ->
+            listAdapter.notifyItemChanged(position)
+        })
     }
 
 }

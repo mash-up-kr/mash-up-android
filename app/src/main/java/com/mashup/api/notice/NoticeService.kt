@@ -1,9 +1,10 @@
 package com.mashup.api.notice
 
 import com.mashup.model.Notice
+import com.mashup.model.VoteStatus
+import io.reactivex.Completable
 import io.reactivex.Flowable
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface NoticeService {
 
@@ -16,4 +17,8 @@ interface NoticeService {
 
     @GET("api/notices/")
     fun getNoticeList(): Flowable<List<Notice>>
+
+    @PATCH("api/notices/attendances/{id}/")
+    fun updateNoticeAttendance(@Path("id") userId: Int, @Body voteStatus: VoteStatus): Completable
+
 }

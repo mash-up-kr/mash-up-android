@@ -2,6 +2,7 @@ package com.mashup.di
 
 import com.google.gson.GsonBuilder
 import com.mashup.BuildConfig
+import com.mashup.util.EnumConverterFactory
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,6 +37,7 @@ val NetworkModule = module {
     single {
         Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addConverterFactory(EnumConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create(get()))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(get())

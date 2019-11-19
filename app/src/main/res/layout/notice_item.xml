@@ -5,7 +5,9 @@
     <data>
 
         <import type="android.widget.CompoundButton" />
+
         <import type="com.mashup.R" />
+
         <import type="com.mashup.model.VoteStatus" />
 
         <variable
@@ -83,9 +85,9 @@
                 android:drawableStart="@drawable/icon_date"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
-                app:noticeTime="@{notice.startAt}"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_normal"
+                app:noticeTime="@{notice.startAt}"
                 tools:text="MASH-UP" />
 
 
@@ -97,10 +99,10 @@
                 android:drawableStart="@drawable/icon_clock"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
-                app:startAt="@{notice.startAt}"
-                app:duration="@{notice.duration}"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_normal"
+                app:duration="@{notice.duration}"
+                app:startAt="@{notice.startAt}"
                 tools:text="MASH-UP" />
 
             <TextView
@@ -169,12 +171,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:background="@{notice.userAttendance == VoteStatus.ATTEND ? @drawable/notice_attendance_button_background : @drawable/notice_attendance_button_ripple}"
+                    android:clickable="@{notice.userAttendance != VoteStatus.ATTEND}"
                     android:drawablePadding="6dp"
                     android:gravity="center"
+                    android:onClick="@{() -> viewmodel.onClickAttendButton(notice.pk)}"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textSize="@dimen/text_small"
-                    app:backgroundResource="@{notice.userAttendance == VoteStatus.ATTEND ? R.color.author : R.color.colorWhite}"
                     tools:text="MASH-UP" />
 
                 <View
@@ -187,12 +191,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:background="@{notice.userAttendance == VoteStatus.ABSENT ? @drawable/notice_attendance_button_background : @drawable/notice_attendance_button_ripple}"
+                    android:clickable="@{notice.userAttendance != VoteStatus.ABSENT}"
                     android:drawablePadding="6dp"
                     android:gravity="center"
+                    android:onClick="@{() -> viewmodel.onClickAbsentButton(notice.pk)}"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:textSize="@dimen/text_small"
-                    app:backgroundResource="@{notice.userAttendance == VoteStatus.ABSENT ? R.color.author : R.color.colorWhite}"
                     tools:text="MASH-UP" />
             </LinearLayout>
         </LinearLayout>
