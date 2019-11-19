@@ -3,11 +3,14 @@ package com.mashup
 import android.app.Application
 import com.facebook.stetho.Stetho
 import com.jakewharton.threetenabp.AndroidThreeTen
-import com.mashup.app.notices.noticeModule
+import com.mashup.app.notices.NoticeModule
+import com.mashup.di.ApiModule
+import com.mashup.di.ApplicationModule
+import com.mashup.di.NetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class MashupApplication: Application() {
+class MashupApplication : Application() {
 
     companion object {
         @JvmStatic
@@ -19,10 +22,16 @@ class MashupApplication: Application() {
         instance = this
         startKoin {
             androidContext(this@MashupApplication)
-            modules(noticeModule)
+            modules(
+                    listOf(
+                            ApplicationModule,
+                            ApiModule,
+                            NetworkModule,
+                            NoticeModule
+                    ))
         }
         initJSR310()
-        
+
         if (BuildConfig.DEBUG) {
             Stetho.initializeWithDefaults(this)
         }
