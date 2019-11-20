@@ -1,10 +1,14 @@
 package com.mashup.app.notices
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.mashup.app.attendees.AttendeesDialogFragment
+import com.mashup.app.noticedetail.NoticeDetailActivity
+import com.mashup.app.noticedetail.NoticeDetailFragment
 import com.mashup.databinding.NoticesFragmentBinding
 import com.mashup.util.EventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -34,7 +38,7 @@ class NoticesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.setLifecycleOwner(this.viewLifecycleOwner)
         setupListAdapter()
-        setupObserver()
+        setupEventObserver()
     }
 
     private fun setupListAdapter() {
@@ -45,10 +49,23 @@ class NoticesFragment : Fragment() {
         }
     }
 
-    private fun setupObserver() {
+    private fun setupEventObserver() {
         viewModel.itemChangedEvent.observe(this, EventObserver { position ->
             listAdapter.notifyItemChanged(position)
         })
-    }
 
+        viewModel.showDetailEvent.observe(this, EventObserver { notice ->
+            val intent = Intent(this@NoticesFragment.context, NoticeDetailActivity::class.java).apply {
+                putExtra(NoticeDetailFragment.EXTRA_NOTICE, notice)
+            }
+            startActivityForResult(intent, NoticeDetailFragment.REQUEST_NOTICE_ACTION)
+        })
+
+        viewModel.showAttendeesEvent.observe(this, EventObserver { attendees ->
+            fragmentManager?.let {
+                AttendeesDialogFragment.newInstance(attendees)
+                    .show(it, AttendeesDialogFragment.TAG_ATTENDEES_DIALOG)
+            }
+        })
+    }
 }

@@ -24,7 +24,8 @@
         android:layout_height="400dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="50dp">
+        android:layout_marginBottom="50dp"
+        android:onClick="@{() -> viewmodel.onClickItem(notice)}">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,6 +151,7 @@
                 android:drawableEnd="@drawable/icon_arrow"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
+                android:onClick="@{() -> viewmodel.onClickAttendeesButton(notice.attendanceSet)}"
                 android:paddingTop="8dp"
                 android:paddingBottom="8dp"
                 android:text="@{@string/notice_attendance_set_format(notice.attendanceSet.size())}"

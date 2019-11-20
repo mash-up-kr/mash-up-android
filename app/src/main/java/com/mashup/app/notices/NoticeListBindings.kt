@@ -3,7 +3,10 @@ package com.mashup.app.notices
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.mashup.R
 import com.mashup.model.Notice
+import com.mashup.model.NoticeAttendance
+import com.mashup.model.VoteStatus
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import java.util.*
@@ -14,13 +17,22 @@ fun setItems(listView: RecyclerView, items: List<Notice>) {
 }
 
 @BindingAdapter("app:noticeTime")
-fun setNoticeTimeFormat(textView: TextView, date: Date) {
+fun setNoticeTimeFormat(textView: TextView, date: Date?) {
+    if (date == null)
+        return
     textView.text = DateTimeFormat.forPattern("yyyy년 M월 dd일 (E)").print(DateTime(date))
 }
 
 @BindingAdapter(value = ["app:startAt", "app:duration"])
-fun setNoticeDurationFormat(textView: TextView, startAt: Date, duration: String) {
+fun setNoticeDurationFormat(textView: TextView, startAt: Date?, duration: String?) {
+    if (startAt == null || duration == null)
+        return
     val startDate = DateTime(startAt)
     val endDate = startDate.plusHours(DateTimeFormat.forPattern("HH:mm:ss").parseLocalTime(duration).hourOfDay)
     textView.text = "${DateTimeFormat.forPattern("a h시").print(startDate)}-${DateTimeFormat.forPattern("h시").print(endDate)}"
+}
+
+@BindingAdapter("app:attendanceSize")
+fun setAttendanceSize(textView: TextView, attendanceList: List<NoticeAttendance>) {
+    textView.text = textView.context.getString(R.string.notice_attendance_set_format(attendanceList.count { it.vote != VoteStatus.UNSELECTED }))
 }

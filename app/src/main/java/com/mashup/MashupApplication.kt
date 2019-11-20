@@ -3,6 +3,8 @@ package com.mashup
 import android.app.Application
 import com.facebook.stetho.Stetho
 import com.jakewharton.threetenabp.AndroidThreeTen
+import com.mashup.app.attendees.AttendeesDialogModule
+import com.mashup.app.noticedetail.NoticeDetailModule
 import com.mashup.app.notices.NoticeModule
 import com.mashup.di.ApiModule
 import com.mashup.di.ApplicationModule
@@ -27,7 +29,9 @@ class MashupApplication : Application() {
                             ApplicationModule,
                             ApiModule,
                             NetworkModule,
-                            NoticeModule
+                            NoticeModule,
+                            NoticeDetailModule,
+                            AttendeesDialogModule
                     ))
         }
         initJSR310()

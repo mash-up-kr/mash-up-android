@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mashup.model.Notice
+import com.mashup.model.NoticeAttendance
 import com.mashup.model.VoteStatus
 import com.mashup.repository.NoticesRepository
 import com.mashup.util.Event
@@ -19,6 +20,12 @@ class NoticesViewModel(
 
     private val _itemChangedEvent = MutableLiveData<Event<Int>>()
     val itemChangedEvent: LiveData<Event<Int>> = _itemChangedEvent
+
+    private val _showDetailEvent = MutableLiveData<Event<Notice>>()
+    val showDetailEvent: LiveData<Event<Notice>> = _showDetailEvent
+
+    private val _showAttendeesEvent = MutableLiveData<Event<List<NoticeAttendance>>>()
+    val showAttendeesEvent: LiveData<Event<List<NoticeAttendance>>> = _showAttendeesEvent
 
     private val compositeDisposable = CompositeDisposable()
     private val dummyUserId = 1
@@ -62,6 +69,18 @@ class NoticesViewModel(
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({ updateList(noticeId, VoteStatus.ABSENT) }, { /* TODO 에러 발생 분기 처리 */ })
         )
+    }
+
+    fun onClickItem(notice: Notice) {
+        _items.value?.let {
+            _showDetailEvent.value = Event(notice)
+        }
+    }
+
+    fun onClickAttendeesButton(attendees: List<NoticeAttendance>) {
+        _items.value?.let {
+            _showAttendeesEvent.value = Event(attendees)
+        }
     }
 
     private fun updateList(noticeId: Int, voteStatus: VoteStatus) {
