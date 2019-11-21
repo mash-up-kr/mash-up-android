@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">Mash-Up</string>
-    <string name="title_activity_notice">NoticeActivity</string>
+    <string name="attendees_tv_title">투표 참여</string>
+    <string name="attendees_tv_attendance_format"><![CDATA[참여할게요 : <font color="#4f42e9">%d명</font>]]></string>
+    <string name="attendees_tv_absent_format"><![CDATA[불참할게요 : <font color="#4f42e9">%d명</font>]]></string>
+    <string name="attendees_tv_unselected_format"><![CDATA[미참여 : <font color="#4f42e9">%d명</font>]]></string>
     <string name="notice_example_content">
         다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해주쇼!!다들 노트북 지참해줘!!
     </string>

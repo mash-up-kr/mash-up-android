@@ -28,6 +28,7 @@
         android:onClick="@{() -> viewmodel.onClickItem(notice)}">
 
         <LinearLayout
+            android:background="?selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -143,20 +144,27 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/line" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:drawableStart="@drawable/icon_vote"
-                android:drawableEnd="@drawable/icon_arrow"
-                android:drawablePadding="6dp"
-                android:gravity="center_vertical"
+                android:background="?selectableItemBackground"
                 android:onClick="@{() -> viewmodel.onClickAttendeesButton(notice.attendanceSet)}"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="@{@string/notice_attendance_set_format(notice.attendanceSet.size())}"
-                android:textColor="@color/text"
-                android:textSize="@dimen/text_small" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawableStart="@drawable/icon_vote"
+                    android:drawableEnd="@drawable/icon_arrow"
+                    android:drawablePadding="6dp"
+                    android:gravity="center"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textColor="@color/text"
+                    android:textSize="@dimen/text_small"
+                    app:attendanceSize="@{notice.attendanceSet}" />
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"

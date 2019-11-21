@@ -34,5 +34,5 @@ fun setNoticeDurationFormat(textView: TextView, startAt: Date?, duration: String
 
 @BindingAdapter("app:attendanceSize")
 fun setAttendanceSize(textView: TextView, attendanceList: List<NoticeAttendance>) {
-    textView.text = textView.context.getString(R.string.notice_attendance_set_format(attendanceList.count { it.vote != VoteStatus.UNSELECTED }))
+    textView.text = String.format(textView.resources.getString(R.string.notice_attendance_set_format, attendanceList.count { it.vote != VoteStatus.UNSELECTED }))
 }

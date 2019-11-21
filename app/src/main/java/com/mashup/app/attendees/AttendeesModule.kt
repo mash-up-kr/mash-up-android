@@ -4,6 +4,6 @@ import com.mashup.model.NoticeAttendance
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val AttendeesDialogModule = module {
-    viewModel { (attendanceList: List<NoticeAttendance>) -> AttendeesDialogViewModel(attendanceList) }
+val AttendeesModule = module {
+    viewModel { (attendanceList: List<NoticeAttendance>) -> AttendeesViewModel(attendanceList) }
 }

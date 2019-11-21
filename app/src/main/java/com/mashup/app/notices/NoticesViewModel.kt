@@ -72,27 +72,25 @@ class NoticesViewModel(
     }
 
     fun onClickItem(notice: Notice) {
-        _items.value?.let {
-            _showDetailEvent.value = Event(notice)
-        }
+        _showDetailEvent.value = Event(notice)
     }
 
     fun onClickAttendeesButton(attendees: List<NoticeAttendance>) {
-        _items.value?.let {
-            _showAttendeesEvent.value = Event(attendees)
-        }
+        _showAttendeesEvent.value = Event(attendees)
     }
 
     private fun updateList(noticeId: Int, voteStatus: VoteStatus) {
         var position = 0
         _items.value?.apply {
-            map {
+            map {notice ->
                 position++
-                if (it.pk == noticeId) {
+                if (notice.pk == noticeId) {
                     _itemChangedEvent.value = Event(position - 1)
-                    it.userAttendance = voteStatus
+                    notice.userAttendance = voteStatus
+                    /* TODO 서버값을 다시 불러올지 뷰만 업데이트 해줄지 선택 해야함*/
+                    notice.attendanceSet.find { it.user.pk == dummyUserId }?.apply { vote = voteStatus }
                 } else {
-                    it
+                    notice
                 }
             }
         }

@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.mashup.app.attendees.AttendeesDialogFragment
+import com.mashup.app.attendees.AttendeesActivity
+import com.mashup.app.attendees.AttendeesFragment
 import com.mashup.app.noticedetail.NoticeDetailActivity
 import com.mashup.app.noticedetail.NoticeDetailFragment
 import com.mashup.databinding.NoticesFragmentBinding
@@ -62,10 +63,13 @@ class NoticesFragment : Fragment() {
         })
 
         viewModel.showAttendeesEvent.observe(this, EventObserver { attendees ->
-            fragmentManager?.let {
-                AttendeesDialogFragment.newInstance(attendees)
-                    .show(it, AttendeesDialogFragment.TAG_ATTENDEES_DIALOG)
+            val intent = Intent(this@NoticesFragment.context, AttendeesActivity::class.java).apply {
+                putParcelableArrayListExtra(
+                    AttendeesFragment.EXTRA_ATTENDANCE_LIST,
+                    ArrayList(attendees)
+                )
             }
+            startActivity(intent)
         })
     }
 }

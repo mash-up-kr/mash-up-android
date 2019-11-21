@@ -19,7 +19,7 @@ enum class VoteStatus {
 data class NoticeAttendance(
     val pk: Int,
     val user: User,
-    val vote: VoteStatus,
+    var vote: VoteStatus,
     val voteDisplay: String
 ) : Parcelable {
     constructor(source: Parcel) : this(
