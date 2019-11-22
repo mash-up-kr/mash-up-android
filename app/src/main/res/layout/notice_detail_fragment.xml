@@ -166,7 +166,7 @@
                         android:paddingBottom="8dp"
                         android:textColor="@color/text"
                         android:textSize="@dimen/text_small"
-                        app:attendanceSize="@{viewmodel.item.attendanceSet}" />
+                        android:text="@{@string/notice_attendance_set_format(viewmodel.item.voteAttendanceCount + viewmodel.item.voteAbsentCount)}" />
                 </LinearLayout>
 
                 <View

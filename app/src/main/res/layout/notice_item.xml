@@ -28,9 +28,9 @@
         android:onClick="@{() -> viewmodel.onClickItem(notice)}">
 
         <LinearLayout
-            android:background="?selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="?selectableItemBackground"
             android:orientation="vertical">
 
             <TextView
@@ -163,7 +163,7 @@
                     android:paddingBottom="8dp"
                     android:textColor="@color/text"
                     android:textSize="@dimen/text_small"
-                    app:attendanceSize="@{notice.attendanceSet}" />
+                    android:text="@{@string/notice_attendance_set_format(notice.voteAttendanceCount + notice.voteAbsentCount)}" />
             </LinearLayout>
 
             <View
@@ -176,40 +176,54 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
+                <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@{notice.userAttendance == VoteStatus.ATTEND ? @drawable/notice_attendance_button_background : @drawable/notice_attendance_button_ripple}"
                     android:clickable="@{notice.userAttendance != VoteStatus.ATTEND}"
-                    android:drawablePadding="6dp"
-                    android:gravity="center"
-                    android:onClick="@{() -> viewmodel.onClickAttendButton(notice.pk)}"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:textSize="@dimen/text_small"
-                    tools:text="MASH-UP" />
+                    android:onClick="@{() -> viewmodel.onClickAttendButton(notice.pk)}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableEnd="@{notice.userAttendance == VoteStatus.ATTEND ? @drawable/icon_check : null}"
+                        android:drawablePadding="6dp"
+                        android:gravity="center"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        android:text="@{@string/notice_tv_vote_attendance(notice.voteAttendanceCount)}"
+                        app:voteTextColor="@{notice.userAttendance == VoteStatus.ATTEND}"
+                        android:textSize="@dimen/text_small" />
+                </FrameLayout>
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="@color/line" />
 
-                <TextView
+                <FrameLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@{notice.userAttendance == VoteStatus.ABSENT ? @drawable/notice_attendance_button_background : @drawable/notice_attendance_button_ripple}"
                     android:clickable="@{notice.userAttendance != VoteStatus.ABSENT}"
-                    android:drawablePadding="6dp"
-                    android:gravity="center"
-                    android:onClick="@{() -> viewmodel.onClickAbsentButton(notice.pk)}"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:textSize="@dimen/text_small"
-                    tools:text="MASH-UP" />
+                    android:onClick="@{() -> viewmodel.onClickAbsentButton(notice.pk)}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableEnd="@{notice.userAttendance == VoteStatus.ABSENT ? @drawable/icon_check : null}"
+                        android:drawablePadding="6dp"
+                        android:gravity="center"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp"
+                        app:voteTextColor="@{notice.userAttendance == VoteStatus.ABSENT}"
+                        android:text="@{@string/notice_tv_vote_absent(notice.voteAbsentCount)}"
+                        android:textSize="@dimen/text_small" />
+                </FrameLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

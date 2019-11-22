@@ -1,6 +1,7 @@
 package com.mashup.app.notices
 
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.R
@@ -32,7 +33,10 @@ fun setNoticeDurationFormat(textView: TextView, startAt: Date?, duration: String
     textView.text = "${DateTimeFormat.forPattern("a h시").print(startDate)}-${DateTimeFormat.forPattern("h시").print(endDate)}"
 }
 
-@BindingAdapter("app:attendanceSize")
-fun setAttendanceSize(textView: TextView, attendanceList: List<NoticeAttendance>) {
-    textView.text = String.format(textView.resources.getString(R.string.notice_attendance_set_format, attendanceList.count { it.vote != VoteStatus.UNSELECTED }))
+@BindingAdapter("app:voteTextColor")
+fun setVoteTextColor(textView: TextView, isSelected: Boolean) {
+    if (isSelected)
+        textView.setTextColor(ContextCompat.getColor(textView.context, R.color.colorWhite))
+    else
+        textView.setTextColor(ContextCompat.getColor(textView.context, R.color.colorPrimary))
 }

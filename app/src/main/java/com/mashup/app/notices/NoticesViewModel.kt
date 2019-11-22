@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.mashup.model.Notice
 import com.mashup.model.NoticeAttendance
 import com.mashup.model.VoteStatus
+import com.mashup.model.mapToPresentation
 import com.mashup.repository.NoticesRepository
 import com.mashup.util.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -42,9 +43,7 @@ class NoticesViewModel(
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             _items.value = it.map { notice ->
-                                notice.attendanceSet.find { noticeAttendance -> noticeAttendance.user.pk == dummyUserId }?.let { attendance ->
-                                    notice.apply { notice.userAttendance = attendance.vote }
-                                } ?: notice
+                                notice.mapToPresentation(dummyUserId)
                             }
                         }, {
                             it.printStackTrace()
@@ -58,7 +57,7 @@ class NoticesViewModel(
                 noticesRepository.updateNoticeAttendance(dummyUserId, VoteStatus.ATTEND)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ updateList(noticeId, VoteStatus.ATTEND) },{ /* TODO 에러 발생 분기 처리 */ })
+                        .subscribe({ updateList(noticeId, VoteStatus.ATTEND) },{ updateList(noticeId, VoteStatus.ATTEND) })//TODO 예외 처리로 돌려얗함
         )
     }
 
@@ -67,7 +66,7 @@ class NoticesViewModel(
                 noticesRepository.updateNoticeAttendance(dummyUserId, VoteStatus.ABSENT)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ updateList(noticeId, VoteStatus.ABSENT) }, { /* TODO 에러 발생 분기 처리 */ })
+                        .subscribe({ updateList(noticeId, VoteStatus.ABSENT) }, { updateList(noticeId, VoteStatus.ABSENT) })
         )
     }
 
@@ -85,10 +84,11 @@ class NoticesViewModel(
             map {notice ->
                 position++
                 if (notice.pk == noticeId) {
-                    _itemChangedEvent.value = Event(position - 1)
-                    notice.userAttendance = voteStatus
+                    notice.vote(voteStatus)
                     /* TODO 서버값을 다시 불러올지 뷰만 업데이트 해줄지 선택 해야함*/
                     notice.attendanceSet.find { it.user.pk == dummyUserId }?.apply { vote = voteStatus }
+
+                    _itemChangedEvent.value = Event(position - 1)
                 } else {
                     notice
                 }
