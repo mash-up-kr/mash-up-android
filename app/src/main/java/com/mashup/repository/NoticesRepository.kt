@@ -7,7 +7,7 @@ import io.reactivex.Flowable
 
 interface NoticesRepository {
 
-    fun getNoticeList(): Flowable<List<Notice>>
+    fun getNoticeList(forceRefresh: Boolean): Flowable<List<Notice>>
 
     fun updateNoticeAttendance(userId: Int, voteStatus: VoteStatus): Completable
 }

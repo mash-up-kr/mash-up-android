@@ -19,6 +19,9 @@ class NoticesViewModel(
     private val _items = MutableLiveData<List<Notice>>().apply { value = emptyList() }
     val items: LiveData<List<Notice>> = _items
 
+    private val _isLoading = MutableLiveData<Boolean>(false)
+    val isLoading: LiveData<Boolean> = _isLoading
+
     private val _itemChangedEvent = MutableLiveData<Event<Int>>()
     val itemChangedEvent: LiveData<Event<Int>> = _itemChangedEvent
 
@@ -32,21 +35,23 @@ class NoticesViewModel(
     private val dummyUserId = 1
 
     init {
-        getNotice()
+        getNotice(false)
     }
 
-    private fun getNotice() {
+    private fun getNotice(forceRefresh: Boolean) {
         compositeDisposable.add(
                 noticesRepository
-                        .getNoticeList()
+                        .getNoticeList(forceRefresh)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             _items.value = it.map { notice ->
                                 notice.mapToPresentation(dummyUserId)
                             }
+                            _isLoading.value = false
                         }, {
                             it.printStackTrace()
+                            _isLoading.value = false
                             /* TODO 에러 발생 분기 처리 */
                         })
         )
@@ -76,6 +81,10 @@ class NoticesViewModel(
 
     fun onClickAttendeesButton(attendees: List<NoticeAttendance>) {
         _showAttendeesEvent.value = Event(attendees)
+    }
+
+    fun onRefresh() {
+        getNotice(true)
     }
 
     private fun updateList(noticeId: Int, voteStatus: VoteStatus) {

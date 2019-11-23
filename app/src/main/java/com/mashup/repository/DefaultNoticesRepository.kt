@@ -13,9 +13,9 @@ class DefaultNoticesRepository(
     private var cachedNotices = emptyList<Notice>()
     private var mCacheIsDirty = false
 
-    override fun getNoticeList(): Flowable<List<Notice>> {
+    override fun getNoticeList(forceRefresh: Boolean): Flowable<List<Notice>> {
 
-        if (cachedNotices.isNotEmpty() && !mCacheIsDirty) {
+        if (!forceRefresh && cachedNotices.isNotEmpty() && !mCacheIsDirty) {
             return Flowable.fromArray(cachedNotices)
         }
 

@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         compositeDisposable.add(
                 noticesRepository
-                        .getNoticeList()
+                        .getNoticeList(true)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({

@@ -24,7 +24,7 @@
     <string name="tv_sign_in">인증 및 회원가입하기</string>
     <string name="login_tv_welcome_msg">WELCOME TO MASH UP NOTICE APP</string>
 
-    <string name="notice_attendance_set_format">투표 | %d명 참여 중</string>
+    <string name="notice_attendance_set_format">투표 | %1$d명 중 %2$d명 참여 중</string>
     <string name="notice_tv_vote_attendance">참여할게요! %d</string>
     <string name="notice_tv_vote_absent">불참할게요! %d</string>
 </resources>
