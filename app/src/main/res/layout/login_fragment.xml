@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewmodel"
             type="com.mashup.app.login.LoginViewModel" />
@@ -40,23 +41,23 @@
 
         <LinearLayout
             android:id="@+id/layoutOval"
-            android:layout_marginEnd="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="@+id/tvLoginMainTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLoginMainTitle"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
-                android:background="@drawable/circle_shape_color_primary"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@drawable/circle_shape_color_primary" />
 
             <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:background="@drawable/circle_shape_color_accent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:background="@drawable/circle_shape_color_accent" />
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,9 +90,10 @@
                 android:layout_marginStart="@dimen/login_margin_start_et_layout"
                 android:layout_marginEnd="@dimen/login_margin_end_et_layout"
                 android:hint="@string/login_et_email"
+                android:inputType="textEmailAddress"
+                android:text="@={viewmodel.email}"
                 android:textColorHint="@color/colorEtHint"
                 android:textSize="14sp"
-                android:text="@={viewmodel.email}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
@@ -114,9 +116,10 @@
                 android:layout_marginStart="@dimen/login_margin_start_et_layout"
                 android:layout_marginEnd="@dimen/login_margin_end_et_layout"
                 android:hint="@string/login_et_password"
+                android:inputType="textPassword"
+                android:text="@={viewmodel.password}"
                 android:textColorHint="@color/colorEtHint"
                 android:textSize="14sp"
-                android:text="@={viewmodel.password}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
 
@@ -126,10 +129,10 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/btn_radius_main"
+                android:onClick="@{() -> viewmodel.onClickLoginButton()}"
                 android:text="@string/login_btn"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
-                android:onClick="@{() -> viewmodel.onClickLoginButton()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etPassword" />
@@ -137,14 +140,14 @@
 
         <TextView
             android:id="@+id/tvWelcomeMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
             android:text="@string/login_tv_welcome_msg"
             android:textSize="15sp"
-            android:layout_marginBottom="25dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

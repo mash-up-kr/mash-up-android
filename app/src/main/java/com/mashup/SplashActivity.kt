@@ -2,6 +2,7 @@ package com.mashup
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.mashup.app.login.LoginActivity
 import com.mashup.app.notices.NoticesActivity
@@ -35,8 +36,10 @@ class SplashActivity : AppCompatActivity() {
                             })
             )
         } else {
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            Handler().postDelayed({
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }, 1500)
         }
     }
 
