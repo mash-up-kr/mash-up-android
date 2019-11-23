@@ -188,7 +188,7 @@
                     android:layout_weight="1"
                     android:background="@{notice.userAttendance == VoteStatus.ATTEND ? @drawable/notice_attendance_button_background : @drawable/notice_attendance_button_ripple}"
                     android:clickable="@{notice.userAttendance != VoteStatus.ATTEND}"
-                    android:onClick="@{() -> viewmodel.onClickAttendButton(notice.pk)}">
+                    android:onClick="@{() -> viewmodel.onClickAttendanceButton(notice.pk, VoteStatus.ATTEND)}">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -215,7 +215,7 @@
                     android:layout_weight="1"
                     android:background="@{notice.userAttendance == VoteStatus.ABSENT ? @drawable/notice_attendance_button_background : @drawable/notice_attendance_button_ripple}"
                     android:clickable="@{notice.userAttendance != VoteStatus.ABSENT}"
-                    android:onClick="@{() -> viewmodel.onClickAbsentButton(notice.pk)}">
+                    android:onClick="@{() -> viewmodel.onClickAttendanceButton(notice.pk, VoteStatus.ABSENT)}">
 
                     <TextView
                         android:layout_width="wrap_content"

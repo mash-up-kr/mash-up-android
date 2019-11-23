@@ -4,6 +4,7 @@ import android.app.Application
 import com.facebook.stetho.Stetho
 import com.jakewharton.threetenabp.AndroidThreeTen
 import com.mashup.app.attendees.AttendeesModule
+import com.mashup.app.login.LoginModule
 import com.mashup.app.noticedetail.NoticeDetailModule
 import com.mashup.app.notices.NoticeModule
 import com.mashup.di.ApiModule
@@ -31,7 +32,8 @@ class MashupApplication : Application() {
                             NetworkModule,
                             NoticeModule,
                             NoticeDetailModule,
-                            AttendeesModule
+                            AttendeesModule,
+                            LoginModule
                     ))
         }
         initJSR310()

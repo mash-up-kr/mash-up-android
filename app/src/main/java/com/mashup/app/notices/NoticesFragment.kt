@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mashup.app.attendees.AttendeesActivity
 import com.mashup.app.attendees.AttendeesFragment
+import com.mashup.app.login.LoginActivity
 import com.mashup.app.noticedetail.NoticeDetailActivity
 import com.mashup.app.noticedetail.NoticeDetailFragment
 import com.mashup.databinding.NoticesFragmentBinding
@@ -60,6 +61,13 @@ class NoticesFragment : Fragment() {
                 putExtra(NoticeDetailFragment.EXTRA_NOTICE, notice)
             }
             startActivityForResult(intent, NoticeDetailFragment.REQUEST_NOTICE_ACTION)
+        })
+
+        viewModel.onException.observe(this, EventObserver { exception ->
+            if (exception) {
+                activity?.finishAffinity()
+            }
+            startActivity(Intent(this@NoticesFragment.context, LoginActivity::class.java))
         })
 
         viewModel.showAttendeesEvent.observe(this, EventObserver { attendees ->

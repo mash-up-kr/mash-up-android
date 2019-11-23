@@ -22,7 +22,7 @@
         <activity
             android:name=".app.notices.NoticesActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".app.auth.LoginActivity" />
+        <activity android:name=".app.login.LoginActivity" />
         <activity android:name=".app.attendees.AttendeesActivity" />
     </application>
 

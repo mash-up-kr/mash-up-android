@@ -28,4 +28,7 @@
     <string name="notice_attendance_set_complete">투표 종료</string>
     <string name="notice_tv_vote_attendance">참여할게요! %d</string>
     <string name="notice_tv_vote_absent">불참할게요! %d</string>
+
+    <string name="login_error_message_empty_text">이메일 혹은 비밀번호를 채워주세요!</string>
+    <string name="login_error_message_fail_login">이메일 혹은 비밀번호를 확인해주세요!</string>
 </resources>

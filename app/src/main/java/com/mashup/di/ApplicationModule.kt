@@ -1,11 +1,18 @@
 package com.mashup.di
 
-import com.mashup.repository.DefaultNoticesRepository
-import com.mashup.repository.NoticesRepository
-import com.mashup.repository.source.remote.RepositoriesRemoteDataSource
+import com.mashup.repository.notice.DefaultNoticesRepository
+import com.mashup.repository.notice.NoticesRepository
+import com.mashup.repository.notice.remote.NoticesRemoteDataSource
+import com.mashup.repository.user.DefaultUserRepository
+import com.mashup.repository.user.UserRepository
+import com.mashup.repository.user.remote.UserRemoteDataSource
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val ApplicationModule = module {
-    single { RepositoriesRemoteDataSource(get()) }
+    single { NoticesRemoteDataSource(get()) }
     single { DefaultNoticesRepository(get()) as NoticesRepository }
+
+    single { UserRemoteDataSource(get()) }
+    single { DefaultUserRepository(androidContext(), get()) as UserRepository }
 }

@@ -1,13 +1,13 @@
-package com.mashup.repository
+package com.mashup.repository.notice
 
 import com.mashup.model.Notice
 import com.mashup.model.VoteStatus
-import com.mashup.repository.source.remote.RepositoriesRemoteDataSource
+import com.mashup.repository.notice.remote.NoticesRemoteDataSource
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
 class DefaultNoticesRepository(
-        private val noticesRemoteDataSource: RepositoriesRemoteDataSource
+        private val noticesRemoteDataSource: NoticesRemoteDataSource
 ) : NoticesRepository {
 
     private var cachedNotices = emptyList<Notice>()
@@ -21,8 +21,8 @@ class DefaultNoticesRepository(
 
         return noticesRemoteDataSource
                 .getNoticeList()
-                .flatMap { notices ->
-                    Flowable.fromArray(notices).map {
+                .flatMap { response ->
+                    Flowable.fromArray(response.results).map {
                         it.reversed()
                     }.doOnNext {
                         cachedNotices = it
@@ -31,7 +31,7 @@ class DefaultNoticesRepository(
                 .doOnComplete({ mCacheIsDirty = false })
     }
 
-    override fun updateNoticeAttendance(userId: Int, voteStatus: VoteStatus): Completable {
-        return noticesRemoteDataSource.updateNoticeAttendance(userId, voteStatus)
+    override fun updateNoticeAttendance(token: String, userId: Int, voteStatus: VoteStatus): Completable {
+        return noticesRemoteDataSource.updateNoticeAttendance(token, userId, voteStatus)
     }
 }

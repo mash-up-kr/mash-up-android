@@ -1,4 +1,4 @@
-package com.mashup.repository
+package com.mashup.repository.notice
 
 import com.mashup.model.Notice
 import com.mashup.model.VoteStatus
@@ -9,5 +9,5 @@ interface NoticesRepository {
 
     fun getNoticeList(forceRefresh: Boolean): Flowable<List<Notice>>
 
-    fun updateNoticeAttendance(userId: Int, voteStatus: VoteStatus): Completable
+    fun updateNoticeAttendance(token: String, userId: Int, voteStatus: VoteStatus): Completable
 }

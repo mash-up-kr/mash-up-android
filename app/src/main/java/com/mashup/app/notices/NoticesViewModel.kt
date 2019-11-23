@@ -3,21 +3,23 @@ package com.mashup.app.notices
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mashup.model.Notice
-import com.mashup.model.NoticeAttendance
-import com.mashup.model.VoteStatus
-import com.mashup.model.mapToPresentation
-import com.mashup.repository.NoticesRepository
+import com.mashup.model.*
+import com.mashup.repository.notice.NoticesRepository
+import com.mashup.repository.user.UserRepository
 import com.mashup.util.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class NoticesViewModel(
-        private val noticesRepository: NoticesRepository
+        private val noticesRepository: NoticesRepository,
+        private val userRepository: UserRepository
 ) : ViewModel() {
     private val _items = MutableLiveData<List<Notice>>().apply { value = emptyList() }
     val items: LiveData<List<Notice>> = _items
+
+    private val _onException = MutableLiveData<Event<Boolean>>()
+    val onException: LiveData<Event<Boolean>> = _onException
 
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean> = _isLoading
@@ -32,10 +34,21 @@ class NoticesViewModel(
     val showAttendeesEvent: LiveData<Event<List<NoticeAttendance>>> = _showAttendeesEvent
 
     private val compositeDisposable = CompositeDisposable()
-    private val dummyUserId = 1
+
+    private lateinit var authToken: AuthToken
 
     init {
+        checkAuthToken()
         getNotice(false)
+    }
+
+    private fun checkAuthToken() {
+        with(userRepository.getCachedAuthToken()) {
+            if (this == null)
+                _onException.value = Event(true)
+            else
+                authToken = this
+        }
     }
 
     private fun getNotice(forceRefresh: Boolean) {
@@ -46,7 +59,7 @@ class NoticesViewModel(
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe({
                             _items.value = it.map { notice ->
-                                notice.mapToPresentation(dummyUserId)
+                                notice.mapToPresentation(authToken.user.pk)
                             }
                             _isLoading.value = false
                         }, {
@@ -57,21 +70,12 @@ class NoticesViewModel(
         )
     }
 
-    fun onClickAttendButton(noticeId: Int) {
+    fun onClickAttendanceButton(noticeId: Int, voteStatus: VoteStatus) {
         compositeDisposable.add(
-                noticesRepository.updateNoticeAttendance(dummyUserId, VoteStatus.ATTEND)
+                noticesRepository.updateNoticeAttendance(authToken.key, noticeId, voteStatus)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ updateList(noticeId, VoteStatus.ATTEND) },{ updateList(noticeId, VoteStatus.ATTEND) })//TODO 예외 처리로 돌려얗함
-        )
-    }
-
-    fun onClickAbsentButton(noticeId: Int) {
-        compositeDisposable.add(
-                noticesRepository.updateNoticeAttendance(dummyUserId, VoteStatus.ABSENT)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ updateList(noticeId, VoteStatus.ABSENT) }, { updateList(noticeId, VoteStatus.ABSENT) })
+                        .subscribe({ updateList(noticeId, voteStatus) }, { updateList(noticeId, voteStatus) })//TODO 예외 처리로 돌려얗함
         )
     }
 
@@ -90,12 +94,12 @@ class NoticesViewModel(
     private fun updateList(noticeId: Int, voteStatus: VoteStatus) {
         var position = 0
         _items.value?.apply {
-            map {notice ->
+            map { notice ->
                 position++
                 if (notice.pk == noticeId) {
                     notice.vote(voteStatus)
                     /* TODO 서버값을 다시 불러올지 뷰만 업데이트 해줄지 선택 해야함*/
-                    notice.attendanceSet.find { it.user.pk == dummyUserId }?.apply { vote = voteStatus }
+                    notice.attendanceSet.find { it.user.pk == authToken.user.pk }?.apply { vote = voteStatus }
 
                     _itemChangedEvent.value = Event(position - 1)
                 } else {
