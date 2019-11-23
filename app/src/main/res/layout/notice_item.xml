@@ -138,6 +138,8 @@
                 android:layout_marginEnd="24dp"
                 android:layout_weight="1"
                 android:text="@{notice.description}"
+                android:ellipsize="end"
+                android:maxLines="5"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_small"
                 tools:text="MASH-UP" />
@@ -165,7 +167,7 @@
                     android:gravity="center"
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
-                    android:text="@{@string/notice_attendance_set_format(notice.attendanceSet.size() ,notice.voteAttendanceCount + notice.voteAbsentCount)}"
+                    android:text="@{notice.attendanceSet.size() == notice.voteAttendanceCount + notice.voteAbsentCount ? @string/notice_attendance_set_complete : @string/notice_attendance_set_format(notice.attendanceSet.size() ,notice.voteAttendanceCount + notice.voteAbsentCount)}"
                     android:textColor="@color/text"
                     android:textSize="@dimen/text_small" />
             </LinearLayout>

@@ -22,8 +22,10 @@ class DefaultNoticesRepository(
         return noticesRemoteDataSource
                 .getNoticeList()
                 .flatMap { notices ->
-                    Flowable.fromArray(notices).doOnNext {
-                        cachedNotices = notices
+                    Flowable.fromArray(notices).map {
+                        it.reversed()
+                    }.doOnNext {
+                        cachedNotices = it
                     }
                 }
                 .doOnComplete({ mCacheIsDirty = false })
