@@ -30,5 +30,5 @@
     <string name="notice_tv_vote_absent">불참할게요! %d</string>
 
     <string name="login_error_message_empty_text">이메일 혹은 비밀번호를 채워주세요!</string>
-    <string name="login_error_message_fail_login">이메일 혹은 비밀번호를 확인해주세요!</string>
+    <string name="error_message_unknown">알 수 없는 에러가 발생했습니다.</string>
 </resources>

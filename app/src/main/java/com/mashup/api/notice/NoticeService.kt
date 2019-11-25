@@ -1,7 +1,7 @@
 package com.mashup.api.notice
 
 import com.mashup.api.notice.request.AttendanceUpdateRequest
-import com.mashup.repository.notice.remote.response.NoticeListResponse
+import com.mashup.api.notice.response.NoticeListResponse
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import retrofit2.http.*

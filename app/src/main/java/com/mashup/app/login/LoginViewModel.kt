@@ -1,5 +1,6 @@
 package com.mashup.app.login
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,8 +21,8 @@ class LoginViewModel(
     private val _isLoginSuccess = MutableLiveData<Event<Boolean>>()
     val isLoginSuccess: LiveData<Event<Boolean>> = _isLoginSuccess
 
-    private val _snackbarText = MutableLiveData<Event<Int>>()
-    val snackbarText: LiveData<Event<Int>> = _snackbarText
+    private val _snackbarText = MutableLiveData<Event<Any>>()
+    val snackbarText: LiveData<Event<Any>> = _snackbarText
 
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
@@ -35,8 +36,15 @@ class LoginViewModel(
                     repository.getAuthToken(AuthTokenRequest("", currentEmail, currentPassword))
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe({ _isLoginSuccess.value = Event(true) },
-                                    { _snackbarText.value = Event(R.string.login_error_message_fail_login) })
+                            .subscribe(
+                                    { _isLoginSuccess.value = Event(true) },
+                                    {
+                                        if (it.message.isNullOrEmpty()) {
+                                            _snackbarText.value = Event(R.string.error_message_unknown)
+                                        } else {
+                                            _snackbarText.value = Event(it.message!!)
+                                        }
+                                    })
             )
         } else {
             _snackbarText.value = Event(R.string.login_error_message_empty_text)

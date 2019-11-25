@@ -3,7 +3,7 @@ package com.mashup.repository.notice.remote
 import com.mashup.api.notice.NoticeService
 import com.mashup.api.notice.request.AttendanceUpdateRequest
 import com.mashup.model.VoteStatus
-import com.mashup.repository.notice.remote.response.NoticeListResponse
+import com.mashup.api.notice.response.NoticeListResponse
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers

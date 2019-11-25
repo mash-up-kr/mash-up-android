@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.snackbar.Snackbar
 import com.mashup.app.attendees.AttendeesActivity
 import com.mashup.app.attendees.AttendeesFragment
 import com.mashup.app.login.LoginActivity
@@ -13,6 +14,7 @@ import com.mashup.app.noticedetail.NoticeDetailActivity
 import com.mashup.app.noticedetail.NoticeDetailFragment
 import com.mashup.databinding.NoticesFragmentBinding
 import com.mashup.util.EventObserver
+import com.mashup.util.setupSnackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoticesFragment : Fragment() {
@@ -40,6 +42,7 @@ class NoticesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.setLifecycleOwner(this.viewLifecycleOwner)
         setupListAdapter()
+        setupSnackbar()
         setupEventObserver()
     }
 
@@ -49,6 +52,10 @@ class NoticesFragment : Fragment() {
             listAdapter = NoticeAdapter(viewModel)
             viewDataBinding.tasksList.adapter = listAdapter
         }
+    }
+
+    private fun setupSnackbar() {
+        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
 
     private fun setupEventObserver() {

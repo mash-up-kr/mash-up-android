@@ -3,6 +3,7 @@ package com.mashup.app.notices
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mashup.R
 import com.mashup.model.*
 import com.mashup.repository.notice.NoticesRepository
 import com.mashup.repository.user.UserRepository
@@ -32,6 +33,9 @@ class NoticesViewModel(
 
     private val _showAttendeesEvent = MutableLiveData<Event<List<NoticeAttendance>>>()
     val showAttendeesEvent: LiveData<Event<List<NoticeAttendance>>> = _showAttendeesEvent
+
+    private val _snackbarText = MutableLiveData<Event<Any>>()
+    val snackbarText: LiveData<Event<Any>> = _snackbarText
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -75,7 +79,15 @@ class NoticesViewModel(
                 noticesRepository.updateNoticeAttendance(authToken.key, noticeId, voteStatus)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe({ updateList(noticeId, voteStatus) }, { updateList(noticeId, voteStatus) })//TODO 예외 처리로 돌려얗함
+                        .subscribe(
+                                { updateList(noticeId, voteStatus) },
+                                {
+                                    if (it.message.isNullOrEmpty()) {
+                                        _snackbarText.value = Event(R.string.error_message_unknown)
+                                    } else {
+                                        _snackbarText.value = Event(it.message!!)
+                                    }
+                                })//TODO 예외 처리로 돌려얗함
         )
     }
 

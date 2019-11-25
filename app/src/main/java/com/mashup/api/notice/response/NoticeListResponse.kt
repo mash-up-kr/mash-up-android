@@ -1,4 +1,4 @@
-package com.mashup.repository.notice.remote.response
+package com.mashup.api.notice.response
 
 import com.mashup.model.Notice
 
