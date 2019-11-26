@@ -15,7 +15,8 @@
     <color name="colorBaseBg">#EBF0F3</color>
     <color name="colorEtHint">#DDDDDD</color>
 
-    <color name="line">#29000000</color>\
+    <color name="line">#29000000</color>
+    <color name="frame_line">#d4d4d4</color>
     <color name="text">#525c69</color>
     <color name="author">#4b9efd</color>
     <color name="colorYellow">#ffb941</color>

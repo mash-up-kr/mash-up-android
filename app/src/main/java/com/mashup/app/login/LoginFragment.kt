@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
-import com.mashup.app.notices.NoticesActivity
+import com.mashup.app.main.MainActivity
 import com.mashup.databinding.LoginFragmentBinding
 import com.mashup.util.EventObserver
 import com.mashup.util.setupSnackbar
@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
         viewModel.isLoginSuccess.observe(this, EventObserver {
             if (it) {
                 activity?.finishAffinity()
-                val intent = Intent(this.context, NoticesActivity::class.java)
+                val intent = Intent(this.context, MainActivity::class.java)
                 startActivity(intent)
             }
         })

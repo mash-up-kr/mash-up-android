@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.mashup.app.login.LoginActivity
-import com.mashup.app.notices.NoticesActivity
+import com.mashup.app.main.MainActivity
 import com.mashup.repository.notice.NoticesRepository
 import com.mashup.repository.user.UserRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -29,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({
-                                startActivity(Intent(this, NoticesActivity::class.java))
+                                startActivity(Intent(this, MainActivity::class.java))
                                 finish()
                             }, {
                                 it.printStackTrace()

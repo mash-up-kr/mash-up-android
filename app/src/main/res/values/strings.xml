@@ -31,4 +31,6 @@
 
     <string name="login_error_message_empty_text">이메일 혹은 비밀번호를 채워주세요!</string>
     <string name="error_message_unknown">알 수 없는 에러가 발생했습니다.</string>
+    <string name="title_notice">전체공지</string>
+    <string name="title_setting">설정</string>
 </resources>

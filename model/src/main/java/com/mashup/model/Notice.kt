@@ -86,6 +86,9 @@ data class Notice(
 
 fun Notice.mapToPresentation(userId: Int) = apply {
     userAttendance = VoteStatus.NONE
+    voteAbsentCount = 0
+    voteAttendanceCount = 0
+    voteUnselectedCount = 0
     attendanceSet.forEach { attendance ->
         if (attendance.user.pk == userId) {
             userAttendance = attendance.vote
