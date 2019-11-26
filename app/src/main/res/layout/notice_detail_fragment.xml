@@ -131,17 +131,23 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/line" />
 
-                <TextView
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_weight="1"
+                    android:scrollbars="none">
+
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_marginStart="24dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginEnd="24dp"
-                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
                         android:text="@{viewmodel.item.description}"
                         android:textColor="@color/text"
                         android:textSize="@dimen/text_small"
                         tools:text="MASH-UP" />
+                </ScrollView>
 
                 <View
                         android:layout_width="match_parent"

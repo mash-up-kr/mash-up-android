@@ -33,15 +33,10 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@color/colorPrimary"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/background_circle_top"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             app:onRefreshListener="@{() -> viewmodel.onRefresh()}"
             app:refreshing="@{viewmodel.isLoading}">

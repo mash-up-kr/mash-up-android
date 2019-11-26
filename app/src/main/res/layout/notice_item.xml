@@ -22,7 +22,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="450dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="50dp"
@@ -165,8 +165,8 @@
                     android:drawableEnd="@drawable/icon_arrow"
                     android:drawablePadding="6dp"
                     android:gravity="center"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
                     android:text="@{notice.attendanceSet.size() == notice.voteAttendanceCount + notice.voteAbsentCount ? @string/notice_attendance_set_complete : @string/notice_attendance_set_format(notice.attendanceSet.size() ,notice.voteAttendanceCount + notice.voteAbsentCount)}"
                     android:textColor="@color/text"
                     android:textSize="@dimen/text_small" />
@@ -197,8 +197,8 @@
                         android:drawableEnd="@{notice.userAttendance == VoteStatus.ATTEND ? @drawable/icon_check : null}"
                         android:drawablePadding="6dp"
                         android:gravity="center"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
                         android:text="@{@string/notice_tv_vote_attendance(notice.voteAttendanceCount)}"
                         app:voteTextColor="@{notice.userAttendance == VoteStatus.ATTEND}"
                         android:textSize="@dimen/text_small" />
@@ -224,8 +224,8 @@
                         android:drawableEnd="@{notice.userAttendance == VoteStatus.ABSENT ? @drawable/icon_check : null}"
                         android:drawablePadding="6dp"
                         android:gravity="center"
-                        android:paddingTop="12dp"
-                        android:paddingBottom="12dp"
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
                         app:voteTextColor="@{notice.userAttendance == VoteStatus.ABSENT}"
                         android:text="@{@string/notice_tv_vote_absent(notice.voteAbsentCount)}"
                         android:textSize="@dimen/text_small" />
