@@ -2,18 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
+    android:id="@+id/notices"
     app:startDestination="@+id/navigation_notice">
-
     <fragment
         android:id="@+id/navigation_notice"
         android:name="com.mashup.app.notices.NoticesFragment"
         android:label="@string/title_notice"
         tools:layout="@layout/notices_fragment" />
-
-    <fragment
-        android:id="@+id/navigation_setting"
-        android:name="com.mashup.app.setting.SettingFragment"
-        android:label="@string/title_setting"
-        tools:layout="@layout/setting_fragment" />
 </navigation>
