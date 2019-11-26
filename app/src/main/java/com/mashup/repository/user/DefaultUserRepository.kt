@@ -18,15 +18,9 @@ class DefaultUserRepository(
     private val PREF_KEY_AUTH_TOKEN = "authToken"
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILENAME, 0)
 
-    private lateinit var cachedAuthToken: AuthToken
+    private var cachedAuthToken: AuthToken? = null
 
-    override fun getCachedAuthToken(): AuthToken? {
-        return if (::cachedAuthToken.isInitialized) {
-            cachedAuthToken
-        } else {
-            null
-        }
-    }
+    override fun getCachedAuthToken(): AuthToken? = cachedAuthToken
 
     override fun hasAuthToken(): Boolean {
         val jsonString = prefs.getString(PREF_KEY_AUTH_TOKEN, "")
@@ -51,7 +45,7 @@ class DefaultUserRepository(
     }
 
     override fun getAuthToken(request: AuthTokenRequest): Flowable<AuthToken> {
-        if (::cachedAuthToken.isInitialized) {
+        if (cachedAuthToken != null) {
             return Flowable.just(cachedAuthToken)
         } else {
             val jsonString = prefs.getString(PREF_KEY_AUTH_TOKEN, "")
@@ -70,5 +64,10 @@ class DefaultUserRepository(
                 .doOnNext {
                     saveAuthToken(it)
                 }
+    }
+
+    override fun logout() {
+        cachedAuthToken = null
+        prefs.edit().clear().apply()
     }
 }

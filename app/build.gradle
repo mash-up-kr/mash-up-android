@@ -23,11 +23,13 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "BASE_URL", "\"https://mashup.lhy.kr/\""
+            buildConfigField "String", "FEED_BACK_EMAIL", "\"recruit.mashup@gmail.com\""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"\""
+            buildConfigField "String", "FEED_BACK_EMAIL", "\"recruit.mashup@gmail.com\""
         }
     }
     dataBinding {

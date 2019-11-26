@@ -50,6 +50,7 @@ class NoticesFragment : Fragment() {
         val viewModel = viewDataBinding.viewmodel
         if (viewModel != null) {
             listAdapter = NoticeAdapter(viewModel)
+            viewDataBinding.tasksList.itemAnimator = null
             viewDataBinding.tasksList.adapter = listAdapter
         }
     }
@@ -59,25 +60,25 @@ class NoticesFragment : Fragment() {
     }
 
     private fun setupEventObserver() {
-        viewModel.itemChangedEvent.observe(this, EventObserver { position ->
+        viewModel.itemChangedEvent.observe(viewLifecycleOwner, EventObserver { position ->
             listAdapter.notifyItemChanged(position)
         })
 
-        viewModel.showDetailEvent.observe(this, EventObserver { notice ->
+        viewModel.showDetailEvent.observe(viewLifecycleOwner, EventObserver { notice ->
             val intent = Intent(this@NoticesFragment.context, NoticeDetailActivity::class.java).apply {
                 putExtra(NoticeDetailFragment.EXTRA_NOTICE, notice)
             }
             startActivityForResult(intent, NoticeDetailFragment.REQUEST_NOTICE_ACTION)
         })
 
-        viewModel.onException.observe(this, EventObserver { exception ->
+        viewModel.onException.observe(viewLifecycleOwner, EventObserver { exception ->
             if (exception) {
                 activity?.finishAffinity()
             }
             startActivity(Intent(this@NoticesFragment.context, LoginActivity::class.java))
         })
 
-        viewModel.showAttendeesEvent.observe(this, EventObserver { attendees ->
+        viewModel.showAttendeesEvent.observe(viewLifecycleOwner, EventObserver { attendees ->
             val intent = Intent(this@NoticesFragment.context, AttendeesActivity::class.java).apply {
                 putParcelableArrayListExtra(
                     AttendeesFragment.EXTRA_ATTENDANCE_LIST,

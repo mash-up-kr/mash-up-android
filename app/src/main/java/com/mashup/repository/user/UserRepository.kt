@@ -11,4 +11,6 @@ interface UserRepository {
     fun getCachedAuthToken(): AuthToken?
 
     fun getAuthToken(request: AuthTokenRequest): Flowable<AuthToken>
+
+    fun logout()
 }
