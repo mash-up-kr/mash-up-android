@@ -1,11 +1,11 @@
 package com.mashup.app.login
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.mashup.R
 import com.mashup.api.user.request.AuthTokenRequest
+import com.mashup.repository.notice.NoticesRepository
 import com.mashup.repository.user.UserRepository
 import com.mashup.util.Event
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -14,7 +14,8 @@ import io.reactivex.schedulers.Schedulers
 
 
 class LoginViewModel(
-        private val repository: UserRepository
+        private val userRepository: UserRepository,
+        private val noticesRepository: NoticesRepository
 ) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
 
@@ -36,8 +37,9 @@ class LoginViewModel(
 
         if (!currentEmail.isNullOrEmpty() && !currentPassword.isNullOrEmpty()) {
             compositeDisposable.add(
-                    repository.getAuthToken(AuthTokenRequest("", currentEmail, currentPassword))
+                    userRepository.getAuthToken(AuthTokenRequest("", currentEmail, currentPassword))
                             .subscribeOn(Schedulers.io())
+                            .flatMap { noticesRepository.getNoticeList(true) }
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(
                                     { _isLoginSuccess.value = Event(true) },
