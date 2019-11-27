@@ -24,6 +24,9 @@ class LoginViewModel(
     private val _snackbarText = MutableLiveData<Event<Any>>()
     val snackbarText: LiveData<Event<Any>> = _snackbarText
 
+    private val _hideKeyboard = MutableLiveData<Event<Boolean>>()
+    val hideKeyboard: LiveData<Event<Boolean>> = _hideKeyboard
+
     val email = MutableLiveData<String>()
     val password = MutableLiveData<String>()
 
@@ -52,6 +55,7 @@ class LoginViewModel(
     }
 
     fun onClickLoginButton() {
+        _hideKeyboard.value = Event(true)
         getAuthToken()
     }
 

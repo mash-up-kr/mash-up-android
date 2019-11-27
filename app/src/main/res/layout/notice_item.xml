@@ -27,8 +27,8 @@
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="50dp"
         android:onClick="@{() -> viewmodel.onClickItem(notice)}"
-        app:cardElevation="8dp"
-        app:cardCornerRadius="8dp">
+        app:cardElevation="@dimen/card_elevation"
+        app:cardCornerRadius="@dimen/card_radius">
 
         <LinearLayout
             android:layout_width="match_parent"

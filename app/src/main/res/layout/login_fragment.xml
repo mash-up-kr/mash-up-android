@@ -10,145 +10,159 @@
             type="com.mashup.app.login.LoginViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBaseBg"
-        android:orientation="vertical">
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvLoginScreenTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/login_margin_start_tv_layout"
-            android:layout_marginTop="60dp"
-            android:text="@string/login_tv_screen_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="13sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tvLoginMainTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/login_margin_start_tv_layout"
-            android:text="@string/login_tv_main_title"
-            android:textColor="@color/colorPrimary"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvLoginScreenTitle" />
-
-        <LinearLayout
-            android:id="@+id/layoutOval"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/tvLoginMainTitle"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/circle_shape_color_primary" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:background="@drawable/circle_shape_color_accent" />
-        </LinearLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutForm"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="290dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:background="@color/colorWhite"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.45">
-
-            <TextView
-                android:id="@+id/tvEmail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/login_margin_start_tv_layout"
-                android:layout_marginTop="@dimen/login_margin_top_tv_layout"
-                android:text="@string/login_tv_email"
-                android:textColor="@color/textGrayNormal"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/login_margin_start_et_layout"
-                android:layout_marginEnd="@dimen/login_margin_end_et_layout"
-                android:hint="@string/login_et_email"
-                android:inputType="textEmailAddress"
-                android:text="@={viewmodel.email}"
-                android:textColorHint="@color/colorEtHint"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
-            <TextView
-                android:id="@+id/tvPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/login_margin_start_tv_layout"
-                android:layout_marginTop="30dp"
-                android:text="@string/login_tv_password"
-                android:textColor="@color/textGrayNormal"
-                android:textSize="13sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etEmail" />
-
-            <EditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/login_margin_start_et_layout"
-                android:layout_marginEnd="@dimen/login_margin_end_et_layout"
-                android:hint="@string/login_et_password"
-                android:inputType="textPassword"
-                android:text="@={viewmodel.password}"
-                android:textColorHint="@color/colorEtHint"
-                android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
-
-            <Button
-                android:id="@+id/btnLogin"
-                android:layout_width="260dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/btn_radius_main"
-                android:onClick="@{() -> viewmodel.onClickLoginButton()}"
-                android:text="@string/login_btn"
-                android:textColor="@color/colorWhite"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etPassword" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/tvWelcomeMsg"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:text="@string/login_tv_welcome_msg"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:background="@color/colorBaseBg"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/layoutForm"
+                android:layout_alignParentTop="true">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/title_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLoginScreenTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_margin_start_tv_layout"
+                        android:text="@string/login_tv_screen_title"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tvLoginMainTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_margin_start_tv_layout"
+                        android:text="@string/login_tv_main_title"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="30sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutOval"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/title_container"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/circle_shape_color_primary" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/circle_shape_color_accent" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/layoutForm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                app:cardElevation="@dimen/card_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorWhite"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_margin_start_tv_layout"
+                        android:layout_marginTop="@dimen/login_margin_top_tv_layout"
+                        android:text="@string/login_tv_email"
+                        android:textColor="@color/textGrayNormal"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/etEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_margin_start_et_layout"
+                        android:layout_marginEnd="@dimen/login_margin_end_et_layout"
+                        android:hint="@string/login_et_email"
+                        android:inputType="textEmailAddress"
+                        android:text="@={viewmodel.email}"
+                        android:textColorHint="@color/colorEtHint"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvPassword"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_margin_start_tv_layout"
+                        android:layout_marginTop="30dp"
+                        android:text="@string/login_tv_password"
+                        android:textColor="@color/textGrayNormal"
+                        android:textSize="13sp" />
+
+                    <EditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/login_margin_start_et_layout"
+                        android:layout_marginEnd="@dimen/login_margin_end_et_layout"
+                        android:hint="@string/login_et_password"
+                        android:inputType="textPassword"
+                        android:text="@={viewmodel.password}"
+                        android:textColorHint="@color/colorEtHint"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/btnLogin"
+                        android:layout_width="260dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/btn_radius_main"
+                        android:onClick="@{() -> viewmodel.onClickLoginButton()}"
+                        android:text="@string/login_btn"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tvWelcomeMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layoutForm"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="bottom|center"
+                android:paddingBottom="10dp"
+                android:text="@string/login_tv_welcome_msg"
+                android:textSize="15sp" />
+
+        </RelativeLayout>
+    </ScrollView>
 </layout>

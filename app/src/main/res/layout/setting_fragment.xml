@@ -25,8 +25,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="74dp"
             android:layout_marginEnd="30dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
+            app:cardCornerRadius="@dimen/card_radius"
+            app:cardElevation="@dimen/card_elevation">
 
             <LinearLayout
                 android:layout_width="match_parent"
