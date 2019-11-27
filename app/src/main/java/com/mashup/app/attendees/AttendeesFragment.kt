@@ -57,7 +57,7 @@ class AttendeesFragment(attendanceList: List<NoticeAttendance>) : Fragment() {
     }
 
     private fun setupEventObserver() {
-        viewModel.closeEvent.observe(this, EventObserver {
+        viewModel.closeEvent.observe(viewLifecycleOwner, EventObserver {
             if (it) {
                 activity?.finish()
             }

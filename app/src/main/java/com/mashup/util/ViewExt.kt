@@ -22,14 +22,11 @@ fun View.setupSnackbar(
         snackbarEvent: LiveData<Event<Any>>,
         timeLength: Int
 ) {
-
-    snackbarEvent.observe(lifecycleOwner, Observer { event ->
-        event.getContentIfNotHandled()?.let {
-            when (it) {
-                is Int -> showSnackbar(context.getString(it), timeLength)
-                is String -> showSnackbar(it, timeLength)
-                else -> throw TypeCastException()
-            }
+    snackbarEvent.observe(lifecycleOwner, EventObserver {
+        when (it) {
+            is Int -> showSnackbar(context.getString(it), timeLength)
+            is String -> showSnackbar(it, timeLength)
+            else -> throw TypeCastException()
         }
     })
 }

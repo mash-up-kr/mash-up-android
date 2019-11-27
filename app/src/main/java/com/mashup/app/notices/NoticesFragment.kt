@@ -19,10 +19,6 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NoticesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = NoticesFragment()
-    }
-
     private val viewModel: NoticesViewModel by viewModel()
     private lateinit var viewDataBinding: NoticesFragmentBinding
     private lateinit var listAdapter: NoticeAdapter
@@ -56,7 +52,7 @@ class NoticesFragment : Fragment() {
     }
 
     private fun setupSnackbar() {
-        view?.setupSnackbar(this, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
+        view?.setupSnackbar(viewLifecycleOwner, viewModel.snackbarText, Snackbar.LENGTH_SHORT)
     }
 
     private fun setupEventObserver() {
