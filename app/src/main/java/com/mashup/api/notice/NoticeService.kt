@@ -11,7 +11,8 @@ interface NoticeService {
     @GET("api/notices/")
     fun getNoticeList(): Flowable<NoticeListResponse>
 
-    @PATCH("api/notices/attendances/{id}/")
-    fun updateNoticeAttendance(@Header("Authorization") token: String, @Path("id") noticeId: Int, @Body attendanceUpdateRequest: AttendanceUpdateRequest): Completable
+    @Headers("content-type: application/json")
+    @PATCH("api/notices/attendances/")
+    fun updateNoticeAttendance(@Header("Authorization") token: String, @Body attendanceUpdateRequest: AttendanceUpdateRequest): Completable
 
 }

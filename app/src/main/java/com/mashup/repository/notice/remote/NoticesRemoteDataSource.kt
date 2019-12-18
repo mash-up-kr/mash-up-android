@@ -15,5 +15,5 @@ class NoticesRemoteDataSource internal constructor(
             noticeService.getNoticeList().subscribeOn(Schedulers.io())
 
     fun updateNoticeAttendance(token: String, noticeId: Int, voteStatus: VoteStatus): Completable =
-            noticeService.updateNoticeAttendance("Token $token", noticeId, AttendanceUpdateRequest(voteStatus)).subscribeOn(Schedulers.io())
+            noticeService.updateNoticeAttendance("Token $token", AttendanceUpdateRequest(noticeId, voteStatus)).subscribeOn(Schedulers.io())
 }
