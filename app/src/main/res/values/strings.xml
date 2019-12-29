@@ -38,4 +38,7 @@
     <string name="setting_tv_logout">로그아웃하기</string>
     <string name="title_notice">전체공지</string>
     <string name="title_setting">설정</string>
+
+    <string name="notice_see_more">더 보기</string>
+    <string name="notice_collapse">다시 접기</string>
 </resources>

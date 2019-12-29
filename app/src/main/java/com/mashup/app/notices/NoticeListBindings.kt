@@ -1,13 +1,12 @@
 package com.mashup.app.notices
 
+import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mashup.R
 import com.mashup.model.Notice
-import com.mashup.model.NoticeAttendance
-import com.mashup.model.VoteStatus
 import org.joda.time.DateTime
 import org.joda.time.format.DateTimeFormat
 import java.util.*
@@ -39,4 +38,34 @@ fun setVoteTextColor(textView: TextView, isSelected: Boolean) {
         textView.setTextColor(ContextCompat.getColor(textView.context, R.color.colorWhite))
     else
         textView.setTextColor(ContextCompat.getColor(textView.context, R.color.colorPrimary))
+}
+
+@BindingAdapter(value = ["app:seeMoreVisibility", "app:position", "app:setPosition"])
+fun setSeeMoreTextVisibility(textView: TextView, targetText: TextView, position: Int, setPosition : (Int) -> Unit) {
+    targetText.post {
+        if (targetText.lineCount >= 5) {
+            textView.setOnClickListener {
+                if (targetText.maxLines == 100) {
+                    targetText.maxLines = 5
+                    textView.text = textView.context.getString(R.string.notice_see_more)
+                } else {
+                    targetText.maxLines = 100
+                    textView.text = textView.context.getString(R.string.notice_collapse)
+                }
+                setPosition(position)
+            }
+            targetText.setOnClickListener {
+                if (targetText.maxLines == 100) {
+                    targetText.maxLines = 5
+                    textView.text = textView.context.getString(R.string.notice_see_more)
+                } else {
+                    targetText.maxLines = 100
+                    textView.text = textView.context.getString(R.string.notice_collapse)
+                }
+                setPosition(position)
+            }
+            textView.visibility = View.VISIBLE
+        } else
+            textView.visibility = View.GONE
+    }
 }

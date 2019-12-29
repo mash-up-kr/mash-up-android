@@ -41,6 +41,8 @@ class NoticesViewModel(
 
     private lateinit var authToken: AuthToken
 
+    var expandPosition: Int = -1
+
     init {
         checkAuthToken()
         getNotice(false)
@@ -120,6 +122,15 @@ class NoticesViewModel(
             }
         }
     }
+
+    val setExpandPosition: (Int) -> Unit
+        get() = fun(position: Int) {
+            expandPosition = if (expandPosition == position) {
+                -1
+            } else {
+                position
+            }
+        }
 
     override fun onCleared() {
         compositeDisposable.clear()

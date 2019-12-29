@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <import type="android.widget.CompoundButton" />
 
@@ -20,17 +20,20 @@
         <variable
             name="viewmodel"
             type="com.mashup.app.notices.NoticesViewModel" />
+
+        <variable
+            name="position"
+            type="Integer" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="50dp"
-        android:onClick="@{() -> viewmodel.onClickItem(notice)}"
-        app:cardElevation="@dimen/card_elevation"
-        app:cardCornerRadius="@dimen/card_radius">
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="@dimen/card_elevation">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,8 +91,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="36dp"
                 android:drawableStart="@drawable/icon_date"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
@@ -103,8 +106,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
                 android:drawableStart="@drawable/icon_clock"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
@@ -118,8 +121,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="36dp"
-                android:layout_marginEnd="36dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="36dp"
                 android:drawableStart="@drawable/icon_place"
                 android:drawablePadding="4dp"
                 android:gravity="center_vertical"
@@ -135,18 +138,31 @@
                 android:background="@color/line" />
 
             <TextView
+                android:id="@+id/descriptionText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="24dp"
                 android:layout_weight="1"
-                android:text="@{notice.description}"
                 android:ellipsize="end"
                 android:maxLines="5"
+                android:text="@{notice.description}"
                 android:textColor="@color/text"
                 android:textSize="@dimen/text_small"
                 tools:text="MASH-UP" />
+
+            <TextView
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/notice_see_more"
+                android:textSize="@dimen/text_small"
+                android:visibility="gone"
+                app:position="@{position}"
+                app:seeMoreVisibility="@{descriptionText}"
+                app:setPosition="@{viewmodel.setExpandPosition}" />
 
             <View
                 android:layout_width="match_parent"
@@ -205,8 +221,8 @@
                         android:paddingTop="16dp"
                         android:paddingBottom="16dp"
                         android:text="@{@string/notice_tv_vote_attendance(notice.voteAttendanceCount)}"
-                        app:voteTextColor="@{notice.userAttendance == VoteStatus.ATTEND}"
-                        android:textSize="@dimen/text_small" />
+                        android:textSize="@dimen/text_small"
+                        app:voteTextColor="@{notice.userAttendance == VoteStatus.ATTEND}" />
                 </FrameLayout>
 
                 <View
@@ -231,9 +247,9 @@
                         android:gravity="center"
                         android:paddingTop="16dp"
                         android:paddingBottom="16dp"
-                        app:voteTextColor="@{notice.userAttendance == VoteStatus.ABSENT}"
                         android:text="@{@string/notice_tv_vote_absent(notice.voteAbsentCount)}"
-                        android:textSize="@dimen/text_small" />
+                        android:textSize="@dimen/text_small"
+                        app:voteTextColor="@{notice.userAttendance == VoteStatus.ABSENT}" />
                 </FrameLayout>
             </LinearLayout>
         </LinearLayout>
