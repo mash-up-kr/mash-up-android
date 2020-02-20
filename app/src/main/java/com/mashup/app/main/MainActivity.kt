@@ -5,16 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.mashup.R
 import com.mashup.util.setupWithNavController
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         } // Else, need to wait for onRestoreInstanceState
