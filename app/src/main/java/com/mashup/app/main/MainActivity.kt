@@ -7,9 +7,13 @@ import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.mashup.R
+import com.mashup.app.fcm.FcmViewModel
 import com.mashup.util.setupWithNavController
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
+    private val fcmViewModel: FcmViewModel by viewModel()
+
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     private var currentNavController: LiveData<NavController>? = null
@@ -21,6 +25,8 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             setupBottomNavigationBar()
         } // Else, need to wait for onRestoreInstanceState
+
+        fcmViewModel.start()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {

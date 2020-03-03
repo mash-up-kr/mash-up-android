@@ -101,11 +101,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:text="현명준"
+                    android:textColor="@color/author"
+                    android:textSize="@dimen/text_normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:gravity="center"
+                    android:text="김가온"
+                    android:textColor="@color/author"
+                    android:textSize="@dimen/text_normal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
                     android:layout_marginBottom="60dp"
                     android:gravity="center"
                     android:text="신정아"
                     android:textColor="@color/author"
                     android:textSize="@dimen/text_normal" />
+
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

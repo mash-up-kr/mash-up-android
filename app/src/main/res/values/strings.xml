@@ -34,11 +34,14 @@
 
     <string name="setting_send_feedback_email_title">건의사항 보내기</string>
     <string name="setting_tv_send_feedback_email">피드백 메일</string>
-    <string name="setting_tv_maker">피드백 메일</string>
+    <string name="setting_tv_maker">만든이</string>
     <string name="setting_tv_logout">로그아웃하기</string>
     <string name="title_notice">전체공지</string>
     <string name="title_setting">설정</string>
 
     <string name="notice_see_more">더 보기</string>
     <string name="notice_collapse">다시 접기</string>
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="default_notification_channel_name">mash_up</string>
 </resources>
